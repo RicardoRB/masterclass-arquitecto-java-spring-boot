@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Masterclass: Arquitectura Java Real | AI Engineer</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+        />
+
+        <style>
+            :root {
+                --bg: #0a0e1a;
+                --card: #111827;
+                --text: #f3f4f6;
+                --muted: #94a3b8;
+                --cyan: #00d4ff;
+                --green: #6db33f;
+                --orange: #f89820;
+                --purple: #a855f7;
+                --red: #ef4444;
+                --border: rgba(255, 255, 255, 0.08);
+            }
+            .reveal-viewport {
+                background: var(--bg);
+            }
+            .reveal {
+                font-family: "Outfit", sans-serif;
+                color: var(--text);
+                font-size: 34px;
+            }
+            .reveal h1,
+            .reveal h2,
+            .reveal h3 {
+                font-family: "Outfit", sans-serif;
+                text-transform: none;
+                font-weight: 800;
+                margin-bottom: 16px;
+            }
+            .reveal h1 {
+                font-size: 2.2em;
+                line-height: 1.1;
+            }
+            .reveal h2 {
+                font-size: 1.6em;
+                color: var(--cyan);
+            }
+            .reveal .slides section {
+                text-align: left;
+            }
+            .reveal .slides section.center {
+                text-align: center;
+            }
+            .section-label {
+                display: inline-block;
+                background: rgba(0, 212, 255, 0.1);
+                color: var(--cyan);
+                border: 1px solid var(--cyan);
+                border-radius: 8px;
+                padding: 5px 12px;
+                font-size: 0.4em;
+                font-family: "Space Mono";
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+            .grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .card {
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 25px;
+                font-size: 0.55em;
+            }
+            .card h4 {
+                color: var(--cyan);
+                margin-top: 0;
+            }
+            .card-highlight {
+                border-color: var(--cyan);
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            }
+            .hl-box {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                padding: 15px;
+                margin: 10px 0;
+                border-left: 4px solid var(--cyan);
+            }
+            .badge {
+                padding: 4px 12px;
+                border-radius: 999px;
+                font-size: 0.4em;
+                font-family: "Space Mono";
+                border: 1px solid var(--border);
+            }
+            .price-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 0.6em;
+                margin-top: 20px;
+            }
+            .price-table th {
+                background: var(--cyan);
+                color: var(--bg);
+                padding: 10px;
+            }
+            .price-table td {
+                padding: 15px;
+                border: 1px solid var(--border);
+                text-align: center;
+            }
+            .featured-row {
+                background: rgba(0, 212, 255, 0.05);
+                font-weight: bold;
+            }
+
+            .qr-frame {
+                display: inline-block;
+                padding: 15px;
+                background: white;
+                border-radius: 12px;
+                margin-top: 20px;
+            }
+            .url-display {
+                font-family: "Space Mono";
+                font-size: 0.45em;
+                color: var(--cyan);
+                margin-top: 15px;
+                word-break: break-all;
+                display: block;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- BLOQUE 1: HOOK -->
+                <section class="center">
+                    <span class="section-label">Masterclass Exclusiva</span>
+                    <h1
+                        style="
+                            background: linear-gradient(135deg, #fff, #00d4ff);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        "
+                    >
+                        ¿Por qué el 90% de arquitecturas Java fallan en
+                        producción?
+                    </h1>
+                    <p style="color: var(--muted); font-size: 0.7em">
+                        Y cuándo usar realmente Hexagonal, Monolito o
+                        Microservicios
+                    </p>
+                </section>
+
+                <section>
+                    <div class="section-label">Objetivo</div>
+                    <h2>Lo que vas a dominar hoy</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <ul>
+                                <li>
+                                    Cuándo <strong>NO</strong> usar
+                                    microservicios.
+                                </li>
+                                <li>
+                                    Por qué la arquitectura Hexagonal puede
+                                    destruir tu CRUD simple.
+                                </li>
+                                <li>
+                                    Cómo piensan los arquitectos senior antes de
+                                    escribir una línea de código.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card card-highlight">
+                            <p>
+                                Al final, dejarás de seguir tutoriales para
+                                empezar a tomar decisiones basadas en contexto y
+                                negocio.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BLOQUE 2: AUTORIDAD -->
+                <section>
+                    <div class="section-label">Quiénes somos</div>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Ricardo</h4>
+                            <p style="font-size: 0.8em; color: var(--muted)">
+                                Volkswagen, Telefónica y Startups alto
+                                rendimiento (eDreams, Monta)
+                            </p>
+                            <ul>
+                                <li>+12 años en producción real.</li>
+                                <li>+1M visualizaciones enseñando Java.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>Jordy</h4>
+                            <p style="font-size: 0.8em; color: var(--muted)">
+                                Oracle ACE Associate & Arquitecto Software
+                            </p>
+                            <ul>
+                                <li>
+                                    Experiencia en sistemas de alto tráfico.
+                                </li>
+                                <li>+1M visualizaciones enseñando Java.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="hl-box"
+                        style="font-size: 0.5em; margin-top: 20px"
+                    >
+                        "Nos dimos cuenta de que muchos developers saben usar
+                        frameworks, pero no saben tomar decisiones técnicas
+                        reales."
+                    </div>
+                </section>
+
+                <!-- BLOQUE 3: ENSEÑANZA REAL - PARTE A -->
+                <section>
+                    <div class="section-label">Arquitectura</div>
+                    <h2>El problema: Complejidad vs Valor</h2>
+                    <div class="card-highlight card" style="font-size: 0.7em">
+                        <p>
+                            Muchos developers confunden
+                            <strong>complejidad</strong> con
+                            <strong>buena arquitectura</strong>.
+                        </p>
+                        <ul style="color: var(--red)">
+                            <li>Microservicios para 3 usuarios.</li>
+                            <li>Kafka para un registro simple.</li>
+                            <li>
+                                Overengineering que mata la velocidad del
+                                equipo.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Hexagonal: ¿Oro o Plomo?</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Cuándo SÍ</h4>
+                            <ul>
+                                <li>Dominios complejos (DDD).</li>
+                                <li>
+                                    Lógica que sobrevivirá a los frameworks.
+                                </li>
+                                <li>Necesidad de testing puro.</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="border-color: var(--orange)">
+                            <h4>Cuándo NO</h4>
+                            <ul>
+                                <li>CRUDs directos a base de datos.</li>
+                                <li>Prototipos rápidos.</li>
+                                <li>Equipos sin experiencia en el patrón.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BLOQUE 3: ENSEÑANZA REAL - PARTE B -->
+                <section>
+                    <div class="section-label">Sistemas</div>
+                    <h2>"Microservicios no son arquitectura avanzada"</h2>
+                    <div class="hl-box">
+                        El microservicio es una unidad de despliegue, no una
+                        meta de diseño.
+                    </div>
+                    <div class="grid-2" style="font-size: 0.5em">
+                        <div class="card">
+                            <h4 style="color: var(--red)">La cara oculta</h4>
+                            <ul>
+                                <li>Observabilidad compleja.</li>
+                                <li>Tracing distribuido necesario.</li>
+                                <li>
+                                    Consistencia eventual (dolor de cabeza).
+                                </li>
+                                <li>Contratos entre equipos.</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="border-color: var(--green)">
+                            <h4>El Monolito Modular</h4>
+                            <p>
+                                Muchas veces es la decisión más senior:
+                                escalabilidad interna sin el coste de red.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BLOQUE 3: ENSEÑANZA REAL - TOKENS (CASO PRÁCTICO) -->
+                <section>
+                    <div class="section-label">IA + Java</div>
+                    <h2>Caso Real: Optimización de Tokens</h2>
+                    <p style="font-size: 0.5em; color: var(--muted)">
+                        Incluso en IA, la arquitectura manda sobre el código.
+                    </p>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Error de Arquitecto Junior</h4>
+                            <p>
+                                Mandar todo el historial de chat "por si acaso".
+                            </p>
+                            <ul style="color: var(--red)">
+                                <li>Latencia disparada.</li>
+                                <li>Costes mensuales de miles de dólares.</li>
+                            </ul>
+                        </div>
+                        <div class="card card-highlight">
+                            <h4>Solución Senior</h4>
+                            <p>
+                                Estrategia de Ventana y Resumen (Summarization).
+                            </p>
+                            <code style="font-size: 0.6em; color: var(--cyan)"
+                                >contextWindow - input - margen</code
+                            >
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BLOQUE 4: HISTORIAS -->
+                <section>
+                    <div class="section-label">War Stories</div>
+                    <h2>Historias del frente de batalla</h2>
+                    <div class="card">
+                        <p>
+                            "Una vez implementamos Event Driven con Kafka para
+                            un proceso síncrono que requería respuesta
+                            inmediata..."
+                        </p>
+                        <ul style="font-size: 0.8em">
+                            <li>
+                                <strong>Consecuencia:</strong> El sistema era
+                                imposible de debuguear en vivo.
+                            </li>
+                            <li>
+                                <strong>Lección:</strong> No uses eventos si el
+                                usuario está esperando un 'OK'.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- BLOQUE 5: TRANSICIÓN -->
+                <section class="center">
+                    <h2>"Esto no se aprende en tutoriales de 10 minutos"</h2>
+                    <p style="color: var(--muted)">
+                        El salto de Senior a Arquitecto requiere mentoría y
+                        casos reales.
+                    </p>
+                    <div class="hl-box" style="display: inline-block">
+                        Por eso hemos creado el Bootcamp.
+                    </div>
+                </section>
+
+                <!-- BLOQUE 6: BOOTCAMP -->
+                <section>
+                    <div class="section-label">Bootcamp</div>
+                    <h2>Tu transformación en 12 semanas</h2>
+                    <div class="grid-2">
+                        <div class="card card-highlight">
+                            <h4>Resultado Final</h4>
+                            <ul>
+                                <li>Diseñar sistemas de alto tráfico.</li>
+                                <li>Pasar entrevistas técnicas de +70k.</li>
+                                <li>Liderar decisiones de arquitectura.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>El Método</h4>
+                            <ul>
+                                <li>Sesiones en vivo (Live).</li>
+                                <li>Revisión de código real.</li>
+                                <li>Proyecto final de arquitectura.</li>
+                                <li>Comunidad de expertos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Inversión y Plazas</h2>
+                    <p style="font-size: 0.5em; color: var(--muted)">
+                        Limitamos las plazas para garantizar que revisamos tu
+                        código personalmente.
+                    </p>
+
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Plazas</th>
+                                <th>Inversión</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="featured-row">
+                                <td>Primeras 8</td>
+                                <td>997€</td>
+                                <td style="color: var(--green)">DISPONIBLE</td>
+                            </tr>
+                            <tr>
+                                <td>Siguientes 8</td>
+                                <td>1197€</td>
+                                <td>ESPERA</td>
+                            </tr>
+                            <tr>
+                                <td>Últimas 8</td>
+                                <td>1497€</td>
+                                <td>ESPERA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div
+                        class="hl-box"
+                        style="
+                            font-size: 0.4em;
+                            text-align: center;
+                            margin-top: 20px;
+                        "
+                    >
+                        Recompensamos a los que toman decisiones rápidas. Es la
+                        primera cualidad de un arquitecto.
+                    </div>
+                </section>
+
+                <!-- SECCIÓN FINAL: CTA + QR API -->
+                <section class="center">
+                    <div class="section-label">Inscríbete ahora</div>
+                    <h2>Asegura tu plaza en la 2ª Edición</h2>
+                    <div class="qr-frame">
+                        <!-- Generación dinámica de QR mediante API externa para asegurar funcionamiento -->
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales"
+                            alt="QR Code Bootcamp"
+                        />
+                    </div>
+                    <a
+                        href="https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales"
+                        class="url-display"
+                    >
+                        https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales
+                    </a>
+                    <p
+                        style="
+                            font-size: 0.5em;
+                            color: var(--muted);
+                            margin-top: 20px;
+                        "
+                    >
+                        Escanea el código para acceder directamente a la página
+                        de inscripción.
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+        <script>
+            Reveal.initialize({
+                hash: true,
+                slideNumber: "c/t",
+                center: true,
+                transition: "slide",
+                plugins: [RevealNotes, RevealHighlight],
+            });
+        </script>
+    </body>
+</html>
