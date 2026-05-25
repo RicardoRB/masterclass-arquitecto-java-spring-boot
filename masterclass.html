@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Masterclass: Arquitectura Java Real | AI Engineer</title>
@@ -9,682 +8,819 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+    />
 
     <style>
-        :root {
-            --bg: #050814;
-            --bg-gradient: linear-gradient(135deg, #050814 0%, #0c102b 50%, #050814 100%);
-            --card: rgba(17, 24, 39, 0.7);
-            --card-hover: rgba(22, 30, 49, 0.9);
-            --text: #f3f4f6;
-            --muted: #94a3b8;
-            --cyan: #00f0ff;
-            --cyan-glow: rgba(0, 240, 255, 0.25);
-            --green: #39d353;
-            --green-glow: rgba(57, 211, 83, 0.25);
-            --orange: #ff9f1c;
-            --orange-glow: rgba(255, 159, 28, 0.25);
-            --purple: #bf55ec;
-            --purple-glow: rgba(191, 85, 236, 0.25);
-            --red: #ff4a5a;
-            --red-glow: rgba(255, 74, 90, 0.25);
-            --border: rgba(255, 255, 255, 0.08);
-        }
+      :root {
+        --bg: #050814;
+        --bg-gradient: linear-gradient(
+          135deg,
+          #050814 0%,
+          #0c102b 50%,
+          #050814 100%
+        );
+        --card: rgba(17, 24, 39, 0.7);
+        --card-hover: rgba(22, 30, 49, 0.9);
+        --text: #f3f4f6;
+        --muted: #94a3b8;
+        --cyan: #00f0ff;
+        --cyan-glow: rgba(0, 240, 255, 0.25);
+        --green: #39d353;
+        --green-glow: rgba(57, 211, 83, 0.25);
+        --orange: #ff9f1c;
+        --orange-glow: rgba(255, 159, 28, 0.25);
+        --purple: #bf55ec;
+        --purple-glow: rgba(191, 85, 236, 0.25);
+        --red: #ff4a5a;
+        --red-glow: rgba(255, 74, 90, 0.25);
+        --border: rgba(255, 255, 255, 0.08);
+      }
 
-        .reveal-viewport {
-            background: var(--bg);
-            background-image: var(--bg-gradient);
-        }
+      .reveal-viewport {
+        background: var(--bg);
+        background-image: var(--bg-gradient);
+      }
 
-        .reveal {
-            font-family: "Outfit", sans-serif;
-            color: var(--text);
-            font-size: 34px;
-        }
+      .reveal {
+        font-family: "Outfit", sans-serif;
+        color: var(--text);
+        font-size: 34px;
+      }
 
-        .reveal h1,
-        .reveal h2,
-        .reveal h3,
-        .reveal h4 {
-            font-family: "Outfit", sans-serif;
-            text-transform: none;
-            font-weight: 800;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4 {
+        font-family: "Outfit", sans-serif;
+        text-transform: none;
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
 
-        .reveal h1 {
-            font-size: 2.0em;
-            line-height: 1.1;
-            font-weight: 900;
-        }
+      .reveal h1 {
+        font-size: 2em;
+        line-height: 1.1;
+        font-weight: 900;
+      }
 
-        .reveal h2 {
-            font-size: 1.4em;
-            color: var(--cyan);
-            text-shadow: 0 0 15px var(--cyan-glow);
-            margin-top: 10px;
-        }
+      .reveal h2 {
+        font-size: 1.4em;
+        color: var(--cyan);
+        text-shadow: 0 0 15px var(--cyan-glow);
+        margin-top: 10px;
+      }
 
-        .reveal h3 {
-            font-size: 1.1em;
-            color: #fff;
-        }
+      .reveal h3 {
+        font-size: 1.1em;
+        color: #fff;
+      }
 
-        .reveal .slides section {
-            text-align: left;
-            padding: 10px 20px;
-            box-sizing: border-box;
-        }
+      .reveal .slides section {
+        text-align: left;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
 
-        .reveal .slides section.center {
-            text-align: center;
-        }
+      .reveal .slides section.center {
+        text-align: center;
+      }
 
-        /* Banners & Labels */
-        .urgency-banner {
-            background: linear-gradient(90deg, var(--red) 0%, var(--orange) 100%);
-            color: #fff;
-            font-family: "Space Mono", monospace;
-            font-size: 0.4em;
-            font-weight: 700;
-            padding: 8px 20px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px var(--red-glow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+      /* Banners & Labels */
+      .urgency-banner {
+        background: linear-gradient(90deg, var(--red) 0%, var(--orange) 100%);
+        color: #fff;
+        font-family: "Space Mono", monospace;
+        font-size: 0.4em;
+        font-weight: 700;
+        padding: 8px 20px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px var(--red-glow);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-        .section-label {
-            display: inline-block;
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--cyan);
-            border: 1px solid var(--cyan);
-            border-radius: 8px;
-            padding: 4px 12px;
-            font-size: 0.4em;
-            font-family: "Space Mono", monospace;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
+      .section-label {
+        display: inline-block;
+        background: rgba(0, 240, 255, 0.1);
+        color: var(--cyan);
+        border: 1px solid var(--cyan);
+        border-radius: 8px;
+        padding: 4px 12px;
+        font-size: 0.4em;
+        font-family: "Space Mono", monospace;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
 
-        /* Grids & Cards */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
+      /* Grids & Cards */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 15px;
+      }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 15px;
-        }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+      }
 
-        .grid-3-2 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 10px;
-        }
+      .grid-3-2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+      }
 
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 15px;
+      }
 
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 16px;
-            font-size: 0.52em;
-            line-height: 1.4;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+        font-size: 0.52em;
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
-            pointer-events: none;
-        }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
 
-        .card:hover {
-            background: var(--card-hover);
-            border-color: rgba(0, 240, 255, 0.3);
-            box-shadow: 0 8px 25px var(--cyan-glow);
-            transform: translateY(-2px);
-        }
+      .card:hover {
+        background: var(--card-hover);
+        border-color: rgba(0, 240, 255, 0.3);
+        box-shadow: 0 8px 25px var(--cyan-glow);
+        transform: translateY(-2px);
+      }
 
-        .card h4 {
-            font-size: 1.1em;
-            margin-top: 0;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+      .card h4 {
+        font-size: 1.1em;
+        margin-top: 0;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-        .card p {
-            margin: 5px 0;
-            color: var(--text);
-        }
+      .card p {
+        margin: 5px 0;
+        color: var(--text);
+      }
 
-        .card ul {
-            margin: 8px 0 0 16px;
-            padding: 0;
-        }
+      .card ul {
+        margin: 8px 0 0 16px;
+        padding: 0;
+      }
 
-        .card li {
-            margin-bottom: 4px;
-        }
+      .card li {
+        margin-bottom: 4px;
+      }
 
-        /* Highlight states */
-        .card-highlight {
-            border-color: var(--cyan);
-            background: rgba(0, 240, 255, 0.04);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
-        }
+      /* Highlight states */
+      .card-highlight {
+        border-color: var(--cyan);
+        background: rgba(0, 240, 255, 0.04);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+      }
 
-        .card-highlight:hover {
-            border-color: var(--cyan);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
-        }
+      .card-highlight:hover {
+        border-color: var(--cyan);
+        box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+      }
 
-        .card-red {
-            border-color: rgba(255, 74, 90, 0.3);
-        }
+      .card-red {
+        border-color: rgba(255, 74, 90, 0.3);
+      }
 
-        .card-red:hover {
-            border-color: var(--red);
-            box-shadow: 0 8px 25px var(--red-glow);
-        }
+      .card-red:hover {
+        border-color: var(--red);
+        box-shadow: 0 8px 25px var(--red-glow);
+      }
 
-        .card-green {
-            border-color: rgba(57, 211, 83, 0.3);
-        }
+      .card-green {
+        border-color: rgba(57, 211, 83, 0.3);
+      }
 
-        .card-green:hover {
-            border-color: var(--green);
-            box-shadow: 0 8px 25px var(--green-glow);
-        }
+      .card-green:hover {
+        border-color: var(--green);
+        box-shadow: 0 8px 25px var(--green-glow);
+      }
 
-        .card-purple {
-            border-color: rgba(191, 85, 236, 0.3);
-        }
+      .card-purple {
+        border-color: rgba(191, 85, 236, 0.3);
+      }
 
-        .card-purple:hover {
-            border-color: var(--purple);
-            box-shadow: 0 8px 25px var(--purple-glow);
-        }
+      .card-purple:hover {
+        border-color: var(--purple);
+        box-shadow: 0 8px 25px var(--purple-glow);
+      }
 
-        .card-orange {
-            border-color: rgba(255, 159, 28, 0.3);
-        }
+      .card-orange {
+        border-color: rgba(255, 159, 28, 0.3);
+      }
 
-        .card-orange:hover {
-            border-color: var(--orange);
-            box-shadow: 0 8px 25px var(--orange-glow);
-        }
+      .card-orange:hover {
+        border-color: var(--orange);
+        box-shadow: 0 8px 25px var(--orange-glow);
+      }
 
-        /* Typography Helpers */
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+      /* Typography Helpers */
+      .gradient-text {
+        background: linear-gradient(135deg, #ffffff 40%, var(--cyan) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .gradient-text-green {
-            background: linear-gradient(135deg, #ffffff 40%, var(--green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+      .gradient-text-green {
+        background: linear-gradient(135deg, #ffffff 40%, var(--green) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .gradient-text-orange {
-            background: linear-gradient(135deg, #ffffff 40%, var(--orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+      .gradient-text-orange {
+        background: linear-gradient(135deg, #ffffff 40%, var(--orange) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .text-cyan {
-            color: var(--cyan);
-        }
+      .text-cyan {
+        color: var(--cyan);
+      }
 
-        .text-green {
-            color: var(--green);
-        }
+      .text-green {
+        color: var(--green);
+      }
 
-        .text-orange {
-            color: var(--orange);
-        }
+      .text-orange {
+        color: var(--orange);
+      }
 
-        .text-red {
-            color: var(--red);
-        }
+      .text-red {
+        color: var(--red);
+      }
 
-        .text-purple {
-            color: var(--purple);
-        }
+      .text-purple {
+        color: var(--purple);
+      }
 
-        /* Badges */
-        .badge {
-            padding: 4px 10px;
-            border-radius: 99px;
-            font-size: 0.45em;
-            font-family: "Space Mono", monospace;
-            border: 1px solid var(--border);
-            display: inline-block;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
+      /* Badges */
+      .badge {
+        padding: 4px 10px;
+        border-radius: 99px;
+        font-size: 0.45em;
+        font-family: "Space Mono", monospace;
+        border: 1px solid var(--border);
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
 
-        .badge-cyan {
-            border-color: var(--cyan);
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--cyan);
-        }
+      .badge-cyan {
+        border-color: var(--cyan);
+        background: rgba(0, 240, 255, 0.1);
+        color: var(--cyan);
+      }
 
-        .badge-purple {
-            border-color: var(--purple);
-            background: rgba(191, 85, 236, 0.1);
-            color: var(--purple);
-        }
+      .badge-purple {
+        border-color: var(--purple);
+        background: rgba(191, 85, 236, 0.1);
+        color: var(--purple);
+      }
 
-        .badge-orange {
-            border-color: var(--orange);
-            background: rgba(255, 159, 28, 0.1);
-            color: var(--orange);
-        }
+      .badge-orange {
+        border-color: var(--orange);
+        background: rgba(255, 159, 28, 0.1);
+        color: var(--orange);
+      }
 
-        .badge-green {
-            border-color: var(--green);
-            background: rgba(57, 211, 83, 0.1);
-            color: var(--green);
-        }
+      .badge-green {
+        border-color: var(--green);
+        background: rgba(57, 211, 83, 0.1);
+        color: var(--green);
+      }
 
-        /* Lists & Callouts */
-        .hl-box {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-left: 4px solid var(--cyan);
-            font-size: 0.55em;
-            line-height: 1.4;
-        }
+      /* Lists & Callouts */
+      .hl-box {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 15px 20px;
+        margin: 15px 0;
+        border-left: 4px solid var(--cyan);
+        font-size: 0.55em;
+        line-height: 1.4;
+      }
 
-        .hl-box-green {
-            border-left-color: var(--green);
-            background: rgba(57, 211, 83, 0.02);
-        }
+      .hl-box-green {
+        border-left-color: var(--green);
+        background: rgba(57, 211, 83, 0.02);
+      }
 
-        .hl-box-red {
-            border-left-color: var(--red);
-            background: rgba(255, 74, 90, 0.02);
-        }
+      .hl-box-red {
+        border-left-color: var(--red);
+        background: rgba(255, 74, 90, 0.02);
+      }
 
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            color: #000 !important;
-            font-weight: 800;
-            padding: 10px 24px;
-            border-radius: 99px;
-            text-transform: uppercase;
-            font-size: 0.5em;
-            font-family: "Space Mono", monospace;
-            text-decoration: none;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+      /* Buttons */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+        color: #000 !important;
+        font-weight: 800;
+        padding: 10px 24px;
+        border-radius: 99px;
+        text-transform: uppercase;
+        font-size: 0.5em;
+        font-family: "Space Mono", monospace;
+        text-decoration: none;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
 
-        .btn-primary:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 22px rgba(0, 240, 255, 0.6);
-        }
+      .btn-primary:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 22px rgba(0, 240, 255, 0.6);
+      }
 
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text) !important;
-            border: 1px solid var(--border);
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 99px;
-            font-size: 0.45em;
-            font-family: "Space Mono", monospace;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text) !important;
+        border: 1px solid var(--border);
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 99px;
+        font-size: 0.45em;
+        font-family: "Space Mono", monospace;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--text);
-            transform: translateY(-1px);
-        }
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--text);
+        transform: translateY(-1px);
+      }
 
-        /* Countdown Widget */
-        .timer-container {
-            display: inline-flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
+      /* Countdown Widget */
+      .timer-container {
+        display: inline-flex;
+        gap: 15px;
+        margin: 20px 0;
+      }
 
-        .timer-box {
-            background: rgba(17, 24, 39, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 10px 15px;
-            min-width: 70px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+      .timer-box {
+        background: rgba(17, 24, 39, 0.8);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 15px;
+        min-width: 70px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
 
-        .timer-box.timer-highlight {
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px var(--cyan-glow);
-        }
+      .timer-box.timer-highlight {
+        border-color: var(--cyan);
+        box-shadow: 0 0 15px var(--cyan-glow);
+      }
 
-        .timer-num {
-            font-family: "Space Mono", monospace;
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #fff;
-            display: block;
-            line-height: 1.1;
-        }
+      .timer-num {
+        font-family: "Space Mono", monospace;
+        font-size: 1.1em;
+        font-weight: 700;
+        color: #fff;
+        display: block;
+        line-height: 1.1;
+      }
 
-        .timer-label {
-            font-size: 0.35em;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-            display: block;
-        }
+      .timer-label {
+        font-size: 0.35em;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+        display: block;
+      }
 
-        /* Brand QR Frame */
-        .qr-frame {
-            display: inline-block;
-            padding: 10px;
-            background: white;
-            border-radius: 12px;
-            margin-top: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+      /* Brand QR Frame */
+      .qr-frame {
+        display: inline-block;
+        padding: 10px;
+        background: white;
+        border-radius: 12px;
+        margin-top: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
 
-        .qr-frame img {
-            display: block;
-            width: 150px;
-            height: 150px;
-            margin: 0 !important;
-        }
+      .qr-frame img {
+        display: block;
+        width: 150px;
+        height: 150px;
+        margin: 0 !important;
+      }
 
-        .url-display {
-            font-family: "Space Mono", monospace;
-            font-size: 0.42em;
-            color: var(--cyan);
-            margin-top: 10px;
-            word-break: break-all;
-            display: block;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+      .url-display {
+        font-family: "Space Mono", monospace;
+        font-size: 0.42em;
+        color: var(--cyan);
+        margin-top: 10px;
+        word-break: break-all;
+        display: block;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
-        .url-display:hover {
-            color: #fff;
-        }
+      .url-display:hover {
+        color: #fff;
+      }
 
-        /* Custom Slide Layouts */
-        .slide-footer {
-            position: absolute;
-            bottom: 15px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.4em;
-            color: var(--muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 8px;
-        }
+      /* Custom Slide Layouts */
+      .slide-footer {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.4em;
+        color: var(--muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 8px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="reveal">
-        <div class="slides">
-            <!-- SLIDE 1: PORTADA & HOOK -->
-            <section class="center">
-                <h1 class="gradient-text">
-                    ¿Por qué tantas arquitecturas Java se caen al llegar a producción?
-                </h1>
-                <p style="color: var(--muted); font-size: 0.7em">
-                    Y cuándo usar realmente Hexagonal, Monolito o
-                    Microservicios
-                </p>
-            </section>
+      <div class="slides">
+        <!-- SLIDE 1: PORTADA & HOOK -->
+        <section class="center">
+          <h1 class="gradient-text">
+            ¿Por qué tantas arquitecturas Java se caen al llegar a producción?
+          </h1>
+          <p style="color: var(--muted); font-size: 0.7em">
+            Y cuándo usar realmente Hexagonal, Monolito o Microservicios
+          </p>
+        </section>
 
-            <!-- SLIDE 2: OBJETIVOS -->
-            <section>
-                <span class="section-label">Objetivos</span>
-                <h2>Lo que vas a dominar hoy</h2>
-                <div style="margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    <div class="card card-highlight" style="font-size: 0.6em; padding: 25px;">
-                        <h4 class="text-cyan">Criterio de Decisión</h4>
-                        <p>Aprende a analizar problemas técnicos antes de escribir código.</p>
-                        <ul style="margin-top: 15px;">
-                            <li style="margin-bottom: 8px;">Cuándo <strong>NO</strong> usar microservicios.</li>
-                            <li style="margin-bottom: 8px;">Por qué Hexagonal puede ralentizar un CRUD simple.</li>
-                            <li>Cómo piensan los arquitectos senior ante las limitaciones del negocio.</li>
-                        </ul>
-                    </div>
+        <!-- SLIDE 2: OBJETIVOS -->
+        <section>
+          <h2>Lo que vamos a ver hoy</h2>
+          <div
+            style="
+              margin-top: 30px;
+              max-width: 800px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            <div
+              class="card card-highlight"
+              style="font-size: 0.6em; padding: 25px"
+            >
+              <h4 class="text-cyan">Criterio de Decisión</h4>
+              <p>
+                Aprende a analizar problemas técnicos antes de escribir código.
+              </p>
+              <ul style="margin-top: 15px">
+                <li style="margin-bottom: 8px">
+                  Cuándo <strong>NO</strong> usar microservicios.
+                </li>
+                <li style="margin-bottom: 8px">
+                  Por qué Hexagonal puede ralentizar un CRUD simple.
+                </li>
+                <li>
+                  Cómo piensan los arquitectos senior ante las limitaciones del
+                  negocio.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 4: MENTORES -->
+        <section>
+          <span class="section-label">Mentores</span>
+          <h2>¿Quiénes somos?</h2>
+          <div class="grid-2" style="margin-top: 15px">
+            <!-- Mentor 1: Ricardo -->
+            <div class="card card-purple">
+              <div
+                style="
+                  display: flex;
+                  gap: 15px;
+                  align-items: center;
+                  margin-bottom: 15px;
+                "
+              >
+                <img
+                  src="ricardo.png"
+                  alt="Ricardo Romero"
+                  style="
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid var(--purple);
+                    box-shadow: 0 0 12px var(--purple-glow);
+                    margin: 0 !important;
+                  "
+                />
+                <div style="flex-grow: 1">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <h3 style="margin: 0; color: #fff; font-size: 1.15em">
+                      Ricardo Romero
+                    </h3>
+                  </div>
                 </div>
-            </section>
+              </div>
+              <ul style="margin-bottom: 12px; padding-left: 20px">
+                <li style="margin-bottom: 6px">
+                  +12 años en producción (Volkswagen, Telefonica, eDreams,
+                  Barceló Viajes, startups).
+                </li>
+                <li>
+                  YouTube: +1.7M de vistas aportando valor al ecosistema Java.
+                </li>
+              </ul>
+            </div>
 
-            <!-- SLIDE 4: MENTORES -->
-            <section>
-                <span class="section-label">Mentores</span>
-                <h2>¿Quiénes somos?</h2>
-                <div class="grid-2" style="margin-top: 15px;">
-                    <!-- Mentor 1: Ricardo -->
-                    <div class="card card-purple">
-                        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
-                            <img src="ricardo.png" alt="Ricardo Romero"
-                                style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 2px solid var(--purple); box-shadow: 0 0 12px var(--purple-glow); margin: 0 !important;" />
-                            <div style="flex-grow: 1;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <h3 style="margin: 0; color: #fff; font-size: 1.15em;">Ricardo Romero</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <ul style="margin-bottom: 12px; padding-left: 20px;">
-                            <li style="margin-bottom: 6px;">+12 años en producción (Volkswagen, Telefonica,
-                                eDreams, Barceló Viajes, startups).</li>
-                            <li>YouTube: +1.7M de vistas aportando valor al ecosistema Java.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Mentor 2: Jordy -->
-                    <div class="card card-purple">
-                        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
-                            <img src="jordy.png" alt="Jordy Rodríguez"
-                                style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 2px solid var(--purple); box-shadow: 0 0 12px var(--purple-glow); margin: 0 !important;" />
-                            <div style="flex-grow: 1;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <h3 style="margin: 0; color: #fff; font-size: 1.15em;">Jordy Rodríguez</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <ul style="margin-bottom: 12px; padding-left: 20px;">
-                            <li style="margin-bottom: 6px;">🏆 Reconocido oficialmente por Oracle por su impacto en el
-                                ecosistema.</li>
-                            <li style="margin-bottom: 6px;">Liderazgo en proyectos con más de 1M+ peticiones al
-                                día.</li>
-                            <li>YouTube: +1.2M de vistas.</li>
-                        </ul>
-                    </div>
+            <!-- Mentor 2: Jordy -->
+            <div class="card card-purple">
+              <div
+                style="
+                  display: flex;
+                  gap: 15px;
+                  align-items: center;
+                  margin-bottom: 15px;
+                "
+              >
+                <img
+                  src="jordy.png"
+                  alt="Jordy Rodríguez"
+                  style="
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid var(--purple);
+                    box-shadow: 0 0 12px var(--purple-glow);
+                    margin: 0 !important;
+                  "
+                />
+                <div style="flex-grow: 1">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                    "
+                  >
+                    <h3 style="margin: 0; color: #fff; font-size: 1.15em">
+                      Jordy Rodríguez
+                    </h3>
+                  </div>
                 </div>
-            </section>
+              </div>
+              <ul style="margin-bottom: 12px; padding-left: 20px">
+                <li style="margin-bottom: 6px">
+                  🏆 Reconocido oficialmente por Oracle por su impacto en el
+                  ecosistema.
+                </li>
+                <li style="margin-bottom: 6px">
+                  Liderazgo en proyectos con más de 1M+ peticiones al día.
+                </li>
+                <li>YouTube: +1.2M de vistas.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 5: COMPLEJIDAD VS VALOR (DIDÁCTICA) -->
-            <section>
-                <h2>El problema: Complejidad vs Valor</h2>
-                <div class="grid-2" style="margin-top: 20px;">
-                    <div class="card card-red" style="font-size: 0.58em; padding: 25px;">
-                        <h4 class="text-red">El error común del Junior</h4>
-                        <p>Confundir <strong>complejidad técnica</strong> con <strong>buena arquitectura</strong>.</p>
-                        <ul style="margin-top: 15px; color: var(--muted)">
-                            <li>Montar microservicios para un MVP de 3 usuarios.</li>
-                            <li>Implementar Kafka para un registro de logs simple.</li>
-                            <li>Generar un "Overengineering" que destruye la velocidad del equipo de desarrollo.</li>
-                        </ul>
-                    </div>
-                    <div class="card card-highlight"
-                        style="font-size: 0.58em; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                        <h4 class="text-cyan">La visión del Arquitecto</h4>
-                        <p>El mejor arquitecto no es el que usa más tecnologías de moda, sino el que resuelve el
-                            problema con la <strong>menor complejidad posible</strong>.</p>
-                    </div>
-                </div>
-            </section>
+        <!-- SLIDE 5: COMPLEJIDAD VS VALOR (DIDÁCTICA) -->
+        <section>
+          <h2>El problema: Complejidad vs Valor</h2>
+          <div class="grid-2" style="margin-top: 20px">
+            <div class="card card-red" style="font-size: 0.58em; padding: 25px">
+              <h4 class="text-red">El error común del Junior</h4>
+              <p>
+                Confundir <strong>complejidad técnica</strong> con
+                <strong>buena arquitectura</strong>.
+              </p>
+              <ul style="margin-top: 15px; color: var(--muted)">
+                <li>Montar microservicios para un MVP de 3 usuarios.</li>
+                <li>Implementar Kafka para un registro de logs simple.</li>
+                <li>
+                  Generar un "Overengineering" que destruye la velocidad del
+                  equipo de desarrollo.
+                </li>
+              </ul>
+            </div>
+            <div
+              class="card card-highlight"
+              style="
+                font-size: 0.58em;
+                padding: 25px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="text-cyan">La visión del Arquitecto</h4>
+              <p>
+                El mejor arquitecto no es el que usa más tecnologías de moda,
+                sino el que resuelve el problema con la
+                <strong>menor complejidad posible</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 6: HEXAGONAL (DIDÁCTICA) -->
-            <section>
-                <h2>Hexagonal: ¿Oro o Plomo?</h2>
-                <div class="grid-2" style="margin-top: 25px;">
-                    <div class="card card-green" style="padding: 25px;">
-                        <h4 class="text-green">Cuándo SÍ aplicar Hexagonal</h4>
-                        <ul>
-                            <li style="margin-bottom: 10px;">Dominios de negocio complejos con alta lógica de negocio
-                                (DDD).</li>
-                            <li style="margin-bottom: 10px;">Aplicaciones donde la lógica central debe sobrevivir a
-                                cambios de frameworks o base de datos.</li>
-                            <li>Necesidad crítica de pruebas unitarias puras y aisladas.</li>
-                        </ul>
-                    </div>
-                    <div class="card card-orange" style="padding: 25px;">
-                        <h4 class="text-orange">Cuándo NO aplicar Hexagonal</h4>
-                        <ul>
-                            <li style="margin-bottom: 10px;">CRUDs planos que solo traspasan datos de la API a la Base
-                                de Datos.</li>
-                            <li style="margin-bottom: 10px;">Prototipos rápidos (MVPs) donde la velocidad de entrega
-                                manda.</li>
-                            <li>Equipos junior que aún no dominan la inversión de dependencias.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+        <!-- SLIDE 6: HEXAGONAL (DIDÁCTICA) -->
+        <section>
+          <h2>Hexagonal: ¿Oro o Plomo?</h2>
+          <div class="grid-2" style="margin-top: 25px">
+            <div class="card card-green" style="padding: 25px">
+              <h4 class="text-green">Cuándo SÍ aplicar Hexagonal</h4>
+              <ul>
+                <li style="margin-bottom: 10px">
+                  Dominios de negocio complejos con alta lógica de negocio
+                  (DDD).
+                </li>
+                <li style="margin-bottom: 10px">
+                  Aplicaciones donde la lógica central debe sobrevivir a cambios
+                  de frameworks o base de datos.
+                </li>
+                <li>
+                  Necesidad crítica de pruebas unitarias puras y aisladas.
+                </li>
+              </ul>
+            </div>
+            <div class="card card-orange" style="padding: 25px">
+              <h4 class="text-orange">Cuándo NO aplicar Hexagonal</h4>
+              <ul>
+                <li style="margin-bottom: 10px">
+                  CRUDs planos que solo traspasan datos de la API a la Base de
+                  Datos.
+                </li>
+                <li style="margin-bottom: 10px">
+                  Prototipos rápidos (MVPs) donde la velocidad de entrega manda.
+                </li>
+                <li>
+                  Equipos junior que aún no dominan la inversión de
+                  dependencias.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 7: MICROSERVICIOS (DIDÁCTICA) -->
-            <section>
-                <h2>Los microservicios no son arquitectura avanzada</h2>
-                <div class="hl-box" style="font-size: 0.6em; text-align: center; margin-bottom: 20px;">
-                    El microservicio es un <strong>patrón de despliegue y organización</strong>, no una meta de diseño
-                    de software.
-                </div>
-                <div class="grid-2">
-                    <div class="card card-red">
-                        <h4 class="text-red">La cara oculta</h4>
-                        <ul>
-                            <li>Observabilidad extremadamente compleja.</li>
-                            <li>Consistencia eventual y sincronización compleja de datos.</li>
-                            <li>Coste de red y latencia entre servicios.</li>
-                        </ul>
-                    </div>
-                    <div class="card card-green">
-                        <h4 class="text-green">El Monolito Modular</h4>
-                        <p>Muchas veces, la decisión más madura y senior es diseñar un monolito bien estructurado por
-                            módulos internos.</p>
-                        <p style="margin-top: 8px; color: var(--muted)">
-                            Consigues alta escalabilidad en el desarrollo de software sin pagar el peaje en
-                            infraestructura, red y latencia.
-                        </p>
-                    </div>
-                </div>
-            </section>
+        <!-- SLIDE 7: MICROSERVICIOS (DIDÁCTICA) -->
+        <section>
+          <h2>Los microservicios no son arquitectura avanzada</h2>
+          <div
+            class="hl-box"
+            style="font-size: 0.6em; text-align: center; margin-bottom: 20px"
+          >
+            El microservicio es un
+            <strong>patrón de despliegue y organización</strong>, no una meta de
+            diseño de software.
+          </div>
+          <div class="grid-2">
+            <div class="card card-red">
+              <h4 class="text-red">La cara oculta</h4>
+              <ul>
+                <li>Observabilidad extremadamente compleja.</li>
+                <li>
+                  Consistencia eventual y sincronización compleja de datos.
+                </li>
+                <li>Coste de red y latencia entre servicios.</li>
+              </ul>
+            </div>
+            <div class="card card-green">
+              <h4 class="text-green">El Monolito Modular</h4>
+              <p>
+                Muchas veces, la decisión más madura y senior es diseñar un
+                monolito bien estructurado por módulos internos.
+              </p>
+              <p style="margin-top: 8px; color: var(--muted)">
+                Consigues alta escalabilidad en el desarrollo de software sin
+                pagar el peaje en infraestructura, red y latencia.
+              </p>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 8: CASO REAL - TOKENS (DIDÁCTICA) -->
-            <section>
-                <h2>IA + Java: Optimización de Tokens</h2>
+        <!-- SLIDE 8: CASO REAL - TOKENS (DIDÁCTICA) -->
+        <section>
+          <h2>IA + Java: Optimización de Tokens</h2>
 
-                <p style="font-size: 0.55em; color: var(--muted); margin-bottom: 30px;">
-                    Aplicar una arquitectura coherente con IA no solo reduce costes y consumo de tokens,
-                    sino que también facilita el desarrollo al proporcionar un contexto más claro y predecible.
-                </p>
+          <p
+            style="font-size: 0.55em; color: var(--muted); margin-bottom: 30px"
+          >
+            Aplicar una arquitectura coherente con IA no solo reduce costes y
+            consumo de tokens, sino que también facilita el desarrollo al
+            proporcionar un contexto más claro y predecible.
+          </p>
 
-                <div class="two-columns" style="display: flex; gap: 40px; align-items: flex-start;">
+          <div
+            class="two-columns"
+            style="display: flex; gap: 40px; align-items: flex-start"
+          >
+            <div style="flex: 1">
+              <h3 style="font-size: 0.8em">❌ Proyecto Desorganizado</h3>
 
-                    <div style="flex: 1;">
-                        <h3 style="font-size: 0.8em;">❌ Proyecto Desorganizado</h3>
+              <ul style="font-size: 0.52em; line-height: 1.6">
+                <li>Clases mezcladas sin estructura clara.</li>
+                <li>Nombres inconsistentes.</li>
+                <li>Lógica duplicada en múltiples servicios.</li>
+                <li>Difícil para la IA entender el flujo.</li>
+                <li>Prompts más largos para dar contexto.</li>
+                <li>Más consumo de tokens y peores respuestas.</li>
+              </ul>
 
-                        <ul style="font-size: 0.52em; line-height: 1.6;">
-                            <li>Clases mezcladas sin estructura clara.</li>
-                            <li>Nombres inconsistentes.</li>
-                            <li>Lógica duplicada en múltiples servicios.</li>
-                            <li>Difícil para la IA entender el flujo.</li>
-                            <li>Prompts más largos para dar contexto.</li>
-                            <li>Más consumo de tokens y peores respuestas.</li>
-                        </ul>
-
-                        <pre style="font-size: 0.38em; margin-top: 15px;">
+              <pre style="font-size: 0.38em; margin-top: 15px">
 src/
  ├── Utils.java
  ├── ServiceFinal.java
  ├── UserManager2.java
  ├── Helpers.java
  └── TestStuff.java
-            </pre>
-                    </div>
+            </pre
+              >
+            </div>
 
-                    <div style="flex: 1;">
-                        <h3 style="font-size: 0.8em;">✅ Proyecto Bien Arquitecturado</h3>
+            <div style="flex: 1">
+              <h3 style="font-size: 0.8em">✅ Proyecto Bien Arquitecturado</h3>
 
-                        <ul style="font-size: 0.52em; line-height: 1.6;">
-                            <li>Estructura clara por dominio.</li>
-                            <li>Responsabilidades separadas.</li>
-                            <li>Nombres descriptivos y consistentes.</li>
-                            <li>La IA entiende el proyecto rápidamente.</li>
-                            <li>Prompts más cortos y precisos.</li>
-                            <li>Menos tokens y mejores resultados.</li>
-                        </ul>
+              <ul style="font-size: 0.52em; line-height: 1.6">
+                <li>Estructura clara por dominio.</li>
+                <li>Responsabilidades separadas.</li>
+                <li>Nombres descriptivos y consistentes.</li>
+                <li>La IA entiende el proyecto rápidamente.</li>
+                <li>Prompts más cortos y precisos.</li>
+                <li>Menos tokens y mejores resultados.</li>
+              </ul>
 
-                        <pre style="font-size: 0.38em; margin-top: 15px;">
+              <pre style="font-size: 0.38em; margin-top: 15px">
 src/main/java/com/app
  ├── user/
  │    ├── UserController.java
@@ -693,691 +829,1293 @@ src/main/java/com/app
  └── payment/
       ├── PaymentService.java
       └── PaymentGateway.java
-            </pre>
-                    </div>
+            </pre
+              >
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 30px;
+              padding: 15px;
+              border-left: 4px solid #42affa;
+              background: rgba(66, 175, 250, 0.08);
+              font-size: 0.5em;
+              text-align: left;
+            "
+          >
+            💡 <strong>Idea clave:</strong> Cuanto más predecible y coherente
+            sea tu arquitectura, menos contexto necesita la IA para ayudarte
+            correctamente.
+          </div>
+        </section>
+
+        <!-- SLIDE 9: WAR STORIES (KAFKA) -->
+        <!-- SLIDE: EL PROBLEMA -->
+        <section>
+          <h2>Todo iba bien… hasta que el monolito explotó</h2>
+
+          <div class="grid-2" style="margin-top: 25px; align-items: center">
+            <div>
+              <p style="font-size: 1em; line-height: 1.5">
+                En una startup donde trabajé teníamos un
+                <span class="text-red"
+                  ><strong>monolito en PHP usando Laravel</strong></span
+                >.
+              </p>
+
+              <p
+                style="margin-top: 18px; font-size: 0.95em; color: var(--muted)"
+              >
+                Al principio funcionaba bien. El problema llegó cuando la
+                empresa empezó a crecer muy rápido.
+              </p>
+            </div>
+
+            <div class="card card-red">
+              <h4 class="text-red">Lo que empezó a pasar</h4>
+
+              <ul
+                style="margin-top: 15px; line-height: 1.8; color: var(--muted)"
+              >
+                <li>Deploys cada vez más peligrosos</li>
+                <li>Dependencias acopladas por todas partes</li>
+                <li>Difícil escalar equipos</li>
+                <li>Mucho miedo al tocar producción</li>
+                <li>Tiempo de desarrollo cada vez más lento</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE: EL CAOS -->
+        <section>
+          <h2>El problema no era Laravel</h2>
+
+          <div class="center" style="margin-top: 40px">
+            <div class="card" style="max-width: 900px; margin: auto">
+              <p style="font-size: 1.1em; line-height: 1.7">
+                El problema era que
+                <span class="text-red"
+                  ><strong
+                    >el sistema había crecido sin límites claros</strong
+                  ></span
+                >.
+              </p>
+
+              <p
+                style="
+                  margin-top: 20px;
+                  font-size: 1em;
+                  color: var(--muted);
+                  line-height: 1.7;
+                "
+              >
+                Todo dependía de todo. Un cambio pequeño podía romper
+                funcionalidades completamente distintas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE: LA DECISIÓN -->
+        <section>
+          <h2>Entonces tomamos una decisión</h2>
+
+          <div class="center" style="margin-top: 35px">
+            <div
+              class="card card-highlight"
+              style="max-width: 950px; margin: auto; border-color: var(--green)"
+            >
+              <h3 class="text-green">
+                Migrar poco a poco hacia servicios independientes
+              </h3>
+
+              <div class="grid-2" style="margin-top: 30px">
+                <div>
+                  <h4>Tecnologías elegidas</h4>
+
+                  <ul style="margin-top: 15px; line-height: 1.9">
+                    <li>Kotlin</li>
+                    <li>Micronaut</li>
+                    <li>GraalVM</li>
+                  </ul>
                 </div>
 
-                <div style="
-        margin-top: 30px;
-        padding: 15px;
-        border-left: 4px solid #42affa;
-        background: rgba(66,175,250,0.08);
-        font-size: 0.5em;
-        text-align: left;
-    ">
-                    💡 <strong>Idea clave:</strong> Cuanto más predecible y coherente sea tu arquitectura,
-                    menos contexto necesita la IA para ayudarte correctamente.
+                <div>
+                  <h4>Objetivos</h4>
+
+                  <ul style="margin-top: 15px; line-height: 1.9">
+                    <li>Más estabilidad</li>
+                    <li>Deploys seguros</li>
+                    <li>Mejor rendimiento</li>
+                    <li>Escalar equipos</li>
+                  </ul>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 9: WAR STORIES (KAFKA) -->
-            <section>
-                <span class="section-label">War Story 1</span>
-                <h2>El antipatrón del Kafka Síncrono</h2>
-                <div class="card" style="font-size: 0.58em; padding: 25px;">
-                    <p style="font-size: 1.1em; line-height: 1.5; margin-bottom: 15px;">
-                        "En un sistema de pasarela de pagos crítico, el equipo implementó una arquitectura basada en
-                        eventos (Event-Driven) con Kafka para un flujo donde el usuario web requería la confirmación
-                        síncrona inmediata de su pago."
-                    </p>
-                    <div class="grid-2" style="margin-top: 15px;">
-                        <div>
-                            <h4 class="text-red" style="font-size: 0.95em;">Consecuencias catastróficas</h4>
-                            <ul style="color: var(--muted)">
-                                <li>Sistemas acoplados temporalmente a través de colas.</li>
-                                <li>Latencia de UI inestable.</li>
-                                <li>Imposible debuguear y trazar errores en vivo en producción.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-green" style="font-size: 0.95em;">Lección de Arquitectura</h4>
-                            <p><strong>No uses flujos asíncronos</strong> basados en colas si el cliente/negocio exige
-                                una respuesta bloqueante síncrona en tiempo real.</p>
-                        </div>
-                    </div>
+        <!-- SLIDE: POR QUÉ KOTLIN -->
+        <section>
+          <h2>Kotlin nos cambió la estabilidad</h2>
+
+          <div class="grid-2" style="margin-top: 30px; align-items: center">
+            <div class="card">
+              <h4 class="text-green">Lo que ganamos</h4>
+
+              <ul style="margin-top: 18px; line-height: 1.9">
+                <li>Tipado fuerte</li>
+                <li>Menos errores en runtime</li>
+                <li>Mayor seguridad en cambios</li>
+                <li>Código más mantenible</li>
+                <li>Más confianza al desplegar</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="hl-box hl-box-green" style="font-size: 1em">
+                Muchos errores que antes aparecían en producción ahora se
+                detectaban durante compilación.
+              </div>
+
+              <p
+                style="margin-top: 25px; color: var(--muted); line-height: 1.7"
+              >
+                Eso cambió completamente la velocidad y tranquilidad con la que
+                trabajábamos.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE: RENDIMIENTO -->
+        <section>
+          <h2>Y además ganamos rendimiento</h2>
+
+          <div class="center" style="margin-top: 40px">
+            <div
+              class="card card-highlight"
+              style="max-width: 950px; margin: auto; border-color: var(--green)"
+            >
+              <h3 style="margin-bottom: 25px">Kotlin + Micronaut + GraalVM</h3>
+
+              <div class="grid-3">
+                <div class="metric-card">
+                  <div class="metric-value text-green">⚡</div>
+                  <div class="metric-label">Arranque rápido</div>
                 </div>
-            </section>
 
-            <!-- SLIDE 10: WAR STORIES (UBER VS NUESTRA ESCALA) -->
-            <section>
-                <span class="section-label">War Story 2</span>
-                <h2>Somos más utilizados que Uber (A nuestra escala)</h2>
-                <div class="card" style="font-size: 0.58em; padding: 25px;">
-                    <p style="font-size: 1.15em; line-height: 1.5; margin-bottom: 15px;">
-                        "Procesamos millones de peticiones mensuales hacia diferentes funciones críticas de negocio y
-                        logramos rendimientos superiores a la infraestructura de Uber, contando con una fracción ínfima
-                        de sus recursos."
-                    </p>
-                    <div class="grid-3" style="margin-top: 15px;">
-                        <div class="card card-red" style="padding: 10px 15px;">
-                            <h4 class="text-red" style="font-size: 0.9em;">El Peligro Externo</h4>
-                            <p>El mantenimiento de apps móviles depende de despliegues y factores externos
-                                incontrolables.</p>
-                        </div>
-                        <div class="card card-orange" style="padding: 10px 15px;">
-                            <h4 class="text-orange" style="font-size: 0.9em;">Cuellos de Botella</h4>
-                            <p>Detalles ínfimos de código bloqueante arruinan la experiencia general del usuario.</p>
-                        </div>
-                        <div class="card card-green" style="padding: 10px 15px;">
-                            <h4 class="text-green" style="font-size: 0.9em;">Foco en Negocio</h4>
-                            <p>Solo el 10% de los accesos acaban en viajes vs solicitudes de cotización. Optimizamos la
-                                lectura.</p>
-                        </div>
-                    </div>
+                <div class="metric-card">
+                  <div class="metric-value text-green">📉</div>
+                  <div class="metric-label">Menor consumo RAM</div>
                 </div>
-            </section>
 
-            <!-- SLIDE 11: TRANSICIÓN A LA VENTA -->
-            <section class="center">
-                <h2 class="gradient-text" style="font-size: 1.8em; margin: 30px 0;">
-                    "Lo que necesitas no es más cursos de Udemy. Es claridad, práctica y feedback directo."
-                </h2>
-                <div class="hl-box hl-box-green"
-                    style="display: inline-block; font-size: 0.7em; padding: 15px 30px; margin-bottom: 30px;">
-                    Eso es exactamente lo que ocurre en nuestro Bootcamp de 3 meses.
+                <div class="metric-card">
+                  <div class="metric-value text-green">🚀</div>
+                  <div class="metric-label">Mayor throughput</div>
                 </div>
-            </section>
+              </div>
 
-            <!-- SLIDE 12: TABLA COMPARATIVA -->
-            <section>
-                <h2>¿Qué nos diferencia?</h2>
-                <div class="grid-3" style="align-items: stretch;">
-                    <!-- Otros Bootcamps -->
-                    <div class="card card-red"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                <h4 style="margin: 0; color: #fff;">Otros Bootcamps</h4>
-                                <!-- <span class="text-red" style="font-weight: 800; font-size: 1.1em;">€6.000</span> -->
-                            </div>
-                            <ul style="list-style-type: none; margin-left: 0; font-size: 0.9em; padding-left: 0;">
-                                <li style="margin-bottom: 5px;">❌ Nivel Junior-Senior (no arquitectura)</li>
-                                <li style="margin-bottom: 5px;">❌ Profesores sin experiencia actual en IT</li>
-                                <li style="margin-bottom: 5px;">❌ Clases grabadas de hace 3 años</li>
-                                <li style="margin-bottom: 5px;">❌ Cero mentoría personalizada en tu código</li>
-                                <li>❌ Comunidades gigantes e impersonales</li>
-                            </ul>
-                        </div>
-                        <div class="hl-box"
-                            style="margin: 10px 0 0 0; padding: 8px; border-left-color: var(--red); font-size: 0.95em;">
-                            <strong>Resultado:</strong> Sumas teoría que podías ver gratis, pero sigues sin una guía
-                            práctica.
-                        </div>
-                    </div>
+              <p
+                style="margin-top: 28px; color: var(--muted); line-height: 1.7"
+              >
+                Los servicios eran mucho más ligeros y predecibles,
+                especialmente bajo carga.
+              </p>
+            </div>
+          </div>
+        </section>
 
-                    <!-- Másters Universitarios -->
-                    <div class="card card-orange"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                <h4 style="margin: 0; color: #fff;">Másters</h4>
-                                <!-- <span class="text-orange" style="font-weight: 800; font-size: 1.1em;">€1.600</span> -->
-                            </div>
-                            <ul style="list-style-type: none; margin-left: 0; font-size: 0.9em; padding-left: 0;">
-                                <li style="margin-bottom: 5px;">❌ Demasiada teoría, muy poca acción real</li>
-                                <li style="margin-bottom: 5px;">❌ Docentes del ámbito académico, no de IT</li>
-                                <li style="margin-bottom: 5px;">❌ Contenidos de syllabus desactualizados</li>
-                                <li style="margin-bottom: 5px;">❌ Desconexión con los retos de la industria</li>
-                                <li>❌ Exige 2 años de dedicación rígida</li>
-                            </ul>
-                        </div>
-                        <div class="hl-box"
-                            style="margin: 10px 0 0 0; padding: 8px; border-left-color: var(--orange); font-size: 0.95em;">
-                            <strong>Resultado:</strong> Consigues un título académico en papel, pero sin destreza
-                            práctica actual.
-                        </div>
-                    </div>
+        <!-- SLIDE: IMPACTO ORGANIZATIVO -->
+        <section>
+          <h2>El mayor cambio no fue técnico</h2>
 
-                    <!-- Nuestro Bootcamp -->
-                    <div class="card card-highlight"
-                        style="border-width: 2px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                <h4 class="text-cyan" style="margin: 0;">Este Bootcamp</h4>
-                            </div>
-                            <ul style="list-style-type: none; margin-left: 0; font-size: 0.9em; padding-left: 0;">
-                                <li style="margin-bottom: 5px;">✅ Nivel: De Senior a Arquitecto con práctica</li>
-                                <li style="margin-bottom: 5px;">✅ Instructores con insignia Oracle ACE</li>
-                                <li style="margin-bottom: 5px;">✅ Mentoría real: Feedback en TU código en GitHub</li>
-                                <li style="margin-bottom: 5px;">✅ Acceso vitalicio al material y grabaciones</li>
-                                <li>✅ Garantía de devolución de 14 días sin riesgos</li>
-                            </ul>
-                        </div>
-                        <div class="hl-box hl-box-green" style="margin: 10px 0 0 0; padding: 8px; font-size: 0.95em;">
-                            <strong>Resultado:</strong> Un paso acelerado y tutorizado hacia roles de arquitectura bien
-                            remunerados.
-                        </div>
-                    </div>
+          <div class="center" style="margin-top: 35px">
+            <div class="card" style="max-width: 950px; margin: auto">
+              <h3 class="text-green">Pudimos dividir los equipos</h3>
+
+              <div class="grid-2" style="margin-top: 30px">
+                <div>
+                  <ul style="line-height: 1.9">
+                    <li>Cada equipo tenía ownership</li>
+                    <li>Menos bloqueos entre personas</li>
+                    <li>Deploys independientes</li>
+                    <li>Mayor velocidad de entrega</li>
+                  </ul>
                 </div>
-                <div style="text-align: center; margin-top: 15px; font-size: 0.45em; color: var(--muted);">
-                    "Elige la opción que mejor encaje con tu momento profesional y con el nivel de acompañamiento que
-                    requieras."
+
+                <div>
+                  <div style="font-size: large;" class="hl-box hl-box-green">
+                    Antes:
+                    <strong>todos tocaban el mismo sistema</strong>
+                  </div>
+
+                  <div
+                    class="hl-box"
+                    style="font-size: large; margin-top: 18px; border-left-color: var(--green)"
+                  >
+                    Después:
+                    <strong>cada equipo evolucionaba su dominio</strong>
+                  </div>
                 </div>
-            </section>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 13: DOS RUTAS (LADO A VS LADO B) -->
-            <section>
-                <h2>El mercado Java tiene rutas de carrera distintas</h2>
-                <div class="grid-2" style="margin-top: 20px;">
-                    <!-- LADO A -->
-                    <div class="card card-red" style="opacity: 0.85;">
-                        <h4 class="text-red">Lado A (Donde estás ahora)</h4>
-                        <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 12px;">El programador enfocado
-                            solo en la ejecución</p>
-                        <div
-                            style="display: flex; flex-direction: column; gap: 8px; font-family: 'Space Mono', monospace; font-size: 0.95em;">
-                            <div
-                                style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-                                <span>Programador Java Junior-Mid:</span>
-                                <span class="text-red">€20-30K</span>
-                            </div>
-                            <div
-                                style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-                                <span>Senior Java Developer:</span>
-                                <span class="text-red">€30-40K</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #fff;">
-                                <span>Techo Salarial Típico:</span>
-                                <span class="text-red">€45K</span>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.85em; color: var(--muted); margin-top: 15px; font-style: italic;">
-                            * Mucha gente se queda estancada aquí porque solo implementa tareas asignadas, no porque no
-                            tenga potencial para destacar.
-                        </p>
-                    </div>
+        <!-- SLIDE: CONCLUSIÓN -->
+        <section class="center">
+          <h2>La arquitectura cambia empresas</h2>
 
-                    <!-- LADO B -->
-                    <div class="card card-highlight" style="border-color: var(--green);">
-                        <h4 class="text-green">Lado B (Donde van los que lo entienden)</h4>
-                        <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 12px;">El profesional con
-                            criterio técnico y diseño</p>
-                        <div
-                            style="display: flex; flex-direction: column; gap: 8px; font-family: 'Space Mono', monospace; font-size: 0.95em;">
-                            <div
-                                style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-                                <span>Arquitecto de Software Java:</span>
-                                <span class="text-green">€55-70K</span>
-                            </div>
-                            <div
-                                style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
-                                <span>Staff Engineer Java:</span>
-                                <span class="text-green">€70-95K</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #fff;">
-                                <span>Engineering Lead:</span>
-                                <span class="text-green">€70-90K</span>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.85em; color: var(--muted); margin-top: 15px; font-style: italic;">
-                            * El salto salarial y de impacto reside en dominar el conocimiento específico de
-                            arquitectura y la experiencia defendiéndolo.
-                        </p>
-                    </div>
-                </div>
-            </section>
+          <div
+            class="card card-highlight"
+            style="
+              max-width: 950px;
+              margin: 35px auto 0 auto;
+              border-color: var(--green);
+            "
+          >
+            <p style="font-size: 1.15em; line-height: 1.8">
+              Aprendí que la diferencia entre un desarrollador que
+              <span class="text-red">solo implementa tareas</span>
+              y uno que realmente aporta valor…
+            </p>
 
-            <!-- SLIDE 14: PRUEBA SOCIAL - DISCORD -->
-            <section>
-                <h2>¿Todavía tienes dudas? Pregunta directamente</h2>
-                <p style="font-size: 0.5em; color: var(--muted); margin-bottom: 15px;">
-                    Los alumnos de la primera edición ya están aplicando esto. Búscalos y pregúntales en Discord sin
-                    filtros.
+            <p style="margin-top: 25px; font-size: 1.25em; font-weight: bold">
+              es entender cómo evoluciona un sistema cuando la empresa crece.
+            </p>
+          </div>
+        </section>
+
+        <!-- SLIDE 10: WAR STORIES (UBER VS NUESTRA ESCALA) -->
+        <section>
+          <h2>Somos más utilizados que Uber (A nuestra escala)</h2>
+          <div class="card" style="font-size: 0.58em; padding: 25px">
+            <p style="font-size: 1.15em; line-height: 1.5; margin-bottom: 15px">
+              "Procesamos millones de peticiones mensuales hacia diferentes
+              funciones críticas de negocio y logramos rendimientos superiores a
+              la infraestructura de Uber, contando con una fracción ínfima de
+              sus recursos."
+            </p>
+            <div class="grid-3" style="margin-top: 15px">
+              <div class="card card-red" style="padding: 10px 15px">
+                <h4 class="text-red" style="font-size: 0.9em">
+                  El Peligro Externo
+                </h4>
+                <p>
+                  El mantenimiento de apps móviles depende de despliegues y
+                  factores externos incontrolables.
                 </p>
-                <div class="grid-4" style="margin-top: 10px;">
-                    <div class="card card-highlight" style="text-align: center;">
-                        <div style="font-size: 1.5em; margin-bottom: 8px;">💬</div>
-                        <h4 style="justify-content: center; font-size: 1.05em; color: #fff;">christian.mateoro</h4>
-                        <span class="badge badge-cyan">Alumno Ed. 1</span>
-                    </div>
-                    <div class="card card-highlight" style="text-align: center;">
-                        <div style="font-size: 1.5em; margin-bottom: 8px;">💬</div>
-                        <h4 style="justify-content: center; font-size: 1.05em; color: #fff;">paulocode</h4>
-                        <span class="badge badge-cyan">Alumno Ed. 1</span>
-                    </div>
-                    <div class="card card-highlight" style="text-align: center;">
-                        <div style="font-size: 1.5em; margin-bottom: 8px;">💬</div>
-                        <h4 style="justify-content: center; font-size: 1.05em; color: #fff;">ferramvil</h4>
-                        <span class="badge badge-cyan">Alumno Ed. 1</span>
-                    </div>
-                    <div class="card card-highlight" style="text-align: center;">
-                        <div style="font-size: 1.5em; margin-bottom: 8px;">💬</div>
-                        <h4 style="justify-content: center; font-size: 1.05em; color: #fff;">pablo94alcn</h4>
-                        <span class="badge badge-cyan">Alumno Ed. 1</span>
-                    </div>
-                </div>
-                <div class="hl-box hl-box-green" style="margin-top: 15px; font-size: 0.6em; text-align: center;">
-                    <span class="text-green"
-                        style="font-weight: 800; font-size: 1.2em; display: block; margin-bottom: 4px;">"Encontré un
-                        mejor trabajo con solamente las 3 primeras semanas de este bootcamp."</span>
-                    — Paulo, Alumno 1ª Edición
-                </div>
-            </section>
-
-            <!-- SLIDE 15: RECONOCIMIENTO OFICIAL -->
-            <section>
-                <h2>Garantía de Reconocimiento Oficial</h2>
-                <div class="grid-2" style="margin-top: 25px; align-items: center;">
-                    <div class="card card-highlight" style="padding: 25px; font-size: 0.58em;">
-                        <h4 class="text-cyan">¿Qué significa Oracle ACE Associate?</h4>
-                        <p style="margin-top: 10px; line-height: 1.5;">
-                            Es un reconocimiento oficial otorgado directamente por <strong>Oracle Corporation</strong> a
-                            miembros de la comunidad técnica global que demuestran un impacto técnico y de liderazgo
-                            extraordinario.
-                        </p>
-                        <ul style="color: var(--muted); margin-top: 15px;">
-                            <li style="margin-bottom: 8px;">No es una certificación que se compra aprobando un examen.
-                            </li>
-                            <li style="margin-bottom: 8px;">Oracle publica el nombre de Jordy Rodríguez de manera
-                                oficial en su web pública de expertos del ecosistema.</li>
-                            <li>Estás aprendiendo de un experto validado y avalado directamente por la empresa creadora
-                                de Java.</li>
-                        </ul>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3em; margin-bottom: 10px;">🏆</div>
-                        <h3 style="color: #fff; margin-bottom: 10px;">Reconocido por Oracle</h3>
-                        <p style="font-size: 0.5em; color: var(--muted); max-width: 380px; margin: 0 auto 20px auto;">
-                            Pocos bootcamps en el mercado hispanohablante pueden ofrecer instructores avalados con esta
-                            distinción.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 16: TESTIMONIOS -->
-            <section>
-                <h2>Lo que dicen quienes ya han dado el salto</h2>
-                <div class="grid-3" style="margin-top: 20px;">
-                    <div class="card card-highlight"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="font-style: italic; color: #fff;">
-                            "Suelo ser bastante precavido en lo que compro por internet, pero este bootcamp ha merecido
-                            cada euro que he invertido."
-                        </p>
-                        <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
-                            <strong>Pablo</strong>
-                            <span style="display: block; font-size: 0.85em; color: var(--muted)">Alumno 1ª
-                                Edición</span>
-                        </div>
-                    </div>
-
-                    <div class="card card-highlight"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="font-style: italic; color: #fff;">
-                            "Este bootcamp me ha encantado de principio a fin. El valor que aporta está muy por encima
-                            de su precio. Sin duda lo repetiría y lo volvería a pagar sin pensarlo: es una inversión que
-                            compensa totalmente por todo lo que te llevas."
-                        </p>
-                        <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
-                            <strong>Fernando</strong>
-                            <span style="display: block; font-size: 0.85em; color: var(--muted)">Senior Java
-                                Developer</span>
-                        </div>
-                    </div>
-
-                    <div class="card card-highlight"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="font-style: italic; color: #fff;">
-                            "Me ha encantado. He aprendido muchísimo y me ha cambiado la forma de pensar a la hora de
-                            construir software. Te abre una nueva perspectiva sobre cómo diseñar mejor, con criterio y
-                            con una visión mucho más profesional."
-                        </p>
-                        <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
-                            <strong>Christian</strong>
-                            <span style="display: block; font-size: 0.85em; color: var(--muted)">Backend Engineer</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 17: TEMARIO / CURRICULUM -->
-            <section>
-                <span class="section-label">Syllabus</span>
-                <h2>Un plan de estudios completo de 12 semanas</h2>
-                <div class="grid-3-2" style="font-size: 0.9em;">
-                    <!-- Semana 1-2 -->
-                    <div class="card">
-                        <span class="badge badge-cyan" style="font-size: 0.75em; margin-bottom: 5px;">Semanas 1-2</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Fundamentos y Lifecycle</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Qualifiers, Profiles y Beans</li>
-                            <li>Wiring avanzado (@Bean vs @Component)</li>
-                            <li>Ciclo de vida del Bean e instanciación</li>
-                            <li>DispatcherServlet y Global Errors</li>
-                        </ul>
-                    </div>
-                    <!-- Semana 3-4 -->
-                    <div class="card">
-                        <span class="badge badge-cyan" style="font-size: 0.75em; margin-bottom: 5px;">Semanas 3-4</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Persistencia y Seguridad</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Tuning JPA: N+1 y Entity Graphs</li>
-                            <li>CriteriaBuilder y Blaze-Persistence</li>
-                            <li>Transacciones y Optimistic Locking</li>
-                            <li>Security: RBAC y Refresh Tokens</li>
-                        </ul>
-                    </div>
-                    <!-- Semana 5-6 -->
-                    <div class="card">
-                        <span class="badge badge-cyan" style="font-size: 0.75em; margin-bottom: 5px;">Semanas 5-6</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Testing y CI/CD</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Unit, Integration y Mutation testing (PIT)</li>
-                            <li>Testcontainers (PostgreSQL/Docker)</li>
-                            <li>Migraciones de DB (Flyway/Liquibase)</li>
-                            <li>GitHub Actions Pipelines en Java</li>
-                        </ul>
-                    </div>
-                    <!-- Semana 7-8 -->
-                    <div class="card">
-                        <span class="badge badge-cyan" style="font-size: 0.75em; margin-bottom: 5px;">Semanas 7-8</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Arquitectura y Mensajería</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Arquitectura Hexagonal (Puertos/Adapt.)</li>
-                            <li>DDD: Aggregates y Bounded Contexts</li>
-                            <li>Gateway y OpenFeign</li>
-                            <li>Kafka: Topics y Event-Driven</li>
-                        </ul>
-                    </div>
-                    <!-- Semana 9-10 -->
-                    <div class="card">
-                        <span class="badge badge-cyan" style="font-size: 0.75em; margin-bottom: 5px;">Semanas
-                            9-10</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Patrones y Observabilidad</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Patrón SAGA y Event Sourcing</li>
-                            <li>Resilience4j: Circuit Breakers y Rate Limiters</li>
-                            <li>Micrometer, Prometheus y Grafana</li>
-                            <li>OpenTelemetry y Jaeger distributed tracing</li>
-                        </ul>
-                    </div>
-                    <!-- Semana 11-12 -->
-                    <div class="card card-highlight">
-                        <span class="badge badge-green" style="font-size: 0.75em; margin-bottom: 5px;">Semanas
-                            11-12</span>
-                        <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px;">Proyecto Final de Arquitectura</h4>
-                        <ul style="font-size: 0.85em; color: var(--muted); margin-left: 12px; margin-top: 5px;">
-                            <li>Desarrollo de multi-microservicio real</li>
-                            <li>Implementación Hexagonal + DDD aplicada</li>
-                            <li>Configuración completa de CI/CD & Observabilidad</li>
-                            <li>Defensa del proyecto y feedback personalizado</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 18: URGENCIA & COUNTDOWN -->
-            <section class="center">
-                <h2 class="text-red" style="font-size: 1.5em; margin-bottom: 5px;">
-                    🔥 Inscripciones se cierran el 31 de Mayo a las 23:59
-                </h2>
-                <p style="font-size: 0.55em; color: var(--muted); margin-bottom: 10px;">
-                    Y no reabriremos hasta la tercera edición. Cada mentor solo puede dar feedback a 8-12 personas
-                    máximo.
+              </div>
+              <div class="card card-orange" style="padding: 10px 15px">
+                <h4 class="text-orange" style="font-size: 0.9em">
+                  Cuellos de Botella
+                </h4>
+                <p>
+                  Detalles ínfimos de código bloqueante arruinan la experiencia
+                  general del usuario.
                 </p>
-
-                <!-- Cuenta atrás dinámica en cajas visuales -->
-                <div class="timer-container countdown-timer">
-                    <div class="timer-box timer-highlight">
-                        <span class="timer-num days-val">0</span>
-                        <span class="timer-label">Días</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num hours-val">0</span>
-                        <span class="timer-label">Horas</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num minutes-val">0</span>
-                        <span class="timer-label">Min</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num seconds-val">0</span>
-                        <span class="timer-label">Seg</span>
-                    </div>
-                </div>
-
-                <div style="margin-top: 15px;">
-                    <span class="badge badge-orange" style="font-size: 0.55em; padding: 6px 16px;">
-                        ⚠️ Solamente 24 Plazas Disponibles
-                    </span>
-                </div>
-
-                <p
-                    style="font-size: 0.5em; color: var(--muted); max-width: 700px; margin: 15px auto 0 auto; line-height: 1.4;">
-                    Una vez alcanzado el cupo de alumnos o agotado el tiempo de cuenta atrás, los botones de compra se
-                    desactivarán automáticamente para proteger la calidad de las mentorías.
+              </div>
+              <div class="card card-green" style="padding: 10px 15px">
+                <h4 class="text-green" style="font-size: 0.9em">
+                  Foco en Negocio
+                </h4>
+                <p>
+                  Solo el 10% de los accesos acaban en viajes vs solicitudes de
+                  cotización. Optimizamos la lectura.
                 </p>
-            </section>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- SLIDE 19: PLANES Y PRECIOS -->
-            <section>
-                <span class="section-label">Inversión</span>
-                <h2>Elige tu plan de transformación profesional</h2>
-                <p style="font-size: 0.48em; color: var(--muted); margin-bottom: 10px;">
-                    Precios especiales por lanzamiento de la 2ª Edición.
-                    <span class="text-cyan">Plazas Early Bird:</span> 6 plazas (997€) | <span
-                        class="text-cyan">Regular:</span> 12 plazas (1197€) | <span class="text-cyan">Últimas:</span> 6
-                    plazas (1497€)
-                </p>
+        <!-- SLIDE 11: TRANSICIÓN A LA VENTA -->
+        <section class="center">
+          <h2 class="gradient-text" style="font-size: 1.8em; margin: 30px 0">
+            "Lo que necesitas no es más cursos de Udemy. Es claridad, práctica y
+            feedback directo."
+          </h2>
+          <div
+            class="hl-box hl-box-green"
+            style="
+              display: inline-block;
+              font-size: 0.7em;
+              padding: 15px 30px;
+              margin-bottom: 30px;
+            "
+          >
+            Eso es exactamente lo que ocurre en nuestro Bootcamp de 3 meses.
+          </div>
+        </section>
 
-                <div class="grid-2" style="margin-top: 10px;">
-                    <!-- Plan Flexible -->
-                    <div class="card card-highlight"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                                <div>
-                                    <h4 style="margin: 4px 0 0 0; color: #fff;">Plan Flexible</h4>
-                                </div>
-                                <div style="text-align: right;">
-                                    <span style="font-weight: 800; font-size: 1.3em; color: var(--green);">375€</span>
-                                    <span style="font-size: 0.6em; color: var(--muted); display: block;">/ mes (3
-                                        cuotas)</span>
-                                </div>
-                            </div>
-                            <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 10px;">Total a pagar:
-                                1125,00 €</p>
-                            <ul style="font-size: 0.85em; list-style-type: none; padding-left: 0; margin-left: 0;">
-                                <li style="margin-bottom: 4px;">✔️ 2h de clases en directo (Lunes, Martes, Viernes)</li>
-                                <li style="margin-bottom: 4px;">✔️ Ejercicios prácticos de código y tareas grupales</li>
-                                <li style="margin-bottom: 4px;">✔️ 1 sesión individual de mentoría cada 3 semanas</li>
-                                <li style="margin-bottom: 4px;">✔️ Feedback de código (Code Reviews) en GitHub</li>
-                                <li style="margin-bottom: 4px;">✔️ Canal de soporte WhatsApp y acceso de por vida</li>
-                                <li>✔️ Certificado oficial y acceso a comunidad</li>
-                            </ul>
-                        </div>
-                        <div
-                            style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="text-orange" style="font-weight: bold; font-size: 0.85em;">¡Quedan 23
-                                plazas!</span>
-                            <a href="https://stripe.com" target="_blank" class="btn-primary"
-                                style="margin-top: 0; padding: 6px 14px;">Pagar en 3 Cuotas</a>
-                        </div>
-                    </div>
+        <!-- SLIDE 12: TABLA COMPARATIVA -->
+        <section>
+          <h2>¿Qué nos diferencia?</h2>
+          <div class="grid-3" style="align-items: stretch">
+            <!-- Otros Bootcamps -->
+            <div
+              class="card card-red"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  "
+                >
+                  <h4 style="margin: 0; color: #fff">Otros Bootcamps</h4>
+                  <!-- <span class="text-red" style="font-weight: 800; font-size: 1.1em;">€6.000</span> -->
+                </div>
+                <ul
+                  style="
+                    list-style-type: none;
+                    margin-left: 0;
+                    font-size: 0.9em;
+                    padding-left: 0;
+                  "
+                >
+                  <li style="margin-bottom: 5px">
+                    ❌ Nivel Junior-Senior (no arquitectura)
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Profesores sin experiencia actual en IT
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Clases grabadas de hace 3 años
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Cero mentoría personalizada en tu código
+                  </li>
+                  <li>❌ Comunidades gigantes e impersonales</li>
+                </ul>
+              </div>
+              <div
+                class="hl-box"
+                style="
+                  margin: 10px 0 0 0;
+                  padding: 8px;
+                  border-left-color: var(--red);
+                  font-size: 0.95em;
+                "
+              >
+                <strong>Resultado:</strong> Sumas teoría que podías ver gratis,
+                pero sigues sin una guía práctica.
+              </div>
+            </div>
 
-                    <!-- Pago Único -->
-                    <div class="card card-purple"
-                        style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                                <div>
-                                    <span class="badge badge-purple">Acceso Inmediato</span>
-                                    <h4 style="margin: 4px 0 0 0; color: #fff;">Pago Único (Early Bird)</h4>
-                                </div>
-                                <div style="text-align: right;">
-                                    <span style="font-weight: 800; font-size: 1.3em; color: var(--purple);">997€</span>
-                                    <span style="font-size: 0.6em; color: var(--muted); display: block;">pago
-                                        único</span>
-                                </div>
-                            </div>
-                            <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 10px;">Ahorras más del 10%
-                                respecto a cuotas</p>
-                            <ul style="font-size: 0.85em; list-style-type: none; padding-left: 0; margin-left: 0;">
-                                <li style="margin-bottom: 4px;">✔️ Todos los beneficios del plan flexible</li>
-                                <li style="margin-bottom: 4px;">✔️ <strong>Prioridad de soporte</strong> y correcciones
-                                    rápidas</li>
-                                <li style="margin-bottom: 4px;">✔️ Acceso inmediato a la plataforma técnica</li>
-                                <li style="margin-bottom: 4px;">✔️ Soporte directo de por vida garantizado</li>
-                            </ul>
-                        </div>
-                        <div
-                            style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="text-green" style="font-weight: bold; font-size: 0.85em;">Ahorro
-                                Garantizado</span>
-                            <a href="https://paypal.com" target="_blank" class="btn-primary"
-                                style="margin-top: 0; padding: 6px 14px; background: linear-gradient(135deg, var(--purple) 0%, var(--red) 100%);">Pagar
-                                con PayPal</a>
-                        </div>
-                    </div>
+            <!-- Másters Universitarios -->
+            <div
+              class="card card-orange"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  "
+                >
+                  <h4 style="margin: 0; color: #fff">Másters</h4>
+                  <!-- <span class="text-orange" style="font-weight: 800; font-size: 1.1em;">€1.600</span> -->
+                </div>
+                <ul
+                  style="
+                    list-style-type: none;
+                    margin-left: 0;
+                    font-size: 0.9em;
+                    padding-left: 0;
+                  "
+                >
+                  <li style="margin-bottom: 5px">
+                    ❌ Demasiada teoría, muy poca acción real
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Docentes del ámbito académico, no de IT
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Contenidos de syllabus desactualizados
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ❌ Desconexión con los retos de la industria
+                  </li>
+                  <li>❌ Exige 2 años de dedicación rígida</li>
+                </ul>
+              </div>
+              <div
+                class="hl-box"
+                style="
+                  margin: 10px 0 0 0;
+                  padding: 8px;
+                  border-left-color: var(--orange);
+                  font-size: 0.95em;
+                "
+              >
+                <strong>Resultado:</strong> Consigues un título académico en
+                papel, pero sin destreza práctica actual.
+              </div>
+            </div>
+
+            <!-- Nuestro Bootcamp -->
+            <div
+              class="card card-highlight"
+              style="
+                border-width: 2px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  "
+                >
+                  <h4 class="text-cyan" style="margin: 0">Este Bootcamp</h4>
+                </div>
+                <ul
+                  style="
+                    list-style-type: none;
+                    margin-left: 0;
+                    font-size: 0.9em;
+                    padding-left: 0;
+                  "
+                >
+                  <li style="margin-bottom: 5px">
+                    ✅ Nivel: De Senior a Arquitecto con práctica
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ✅ Instructores con insignia Oracle ACE
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ✅ Mentoría 1-1: Feedback en TU código en GitHub
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ✅ Acceso vitalicio al material y grabaciones
+                  </li>
+                  <li style="margin-bottom: 5px">
+                    ✅ 1 año gratis a codeja.dev
+                  </li>
+                  <li>✅ Garantía de devolución de 14 días sin riesgos</li>
+                </ul>
+              </div>
+              <div
+                class="hl-box hl-box-green"
+                style="margin: 10px 0 0 0; padding: 8px; font-size: 0.95em"
+              >
+                <strong>Resultado:</strong> Un paso acelerado y tutorizado hacia
+                roles de arquitectura bien remunerados.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              text-align: center;
+              margin-top: 15px;
+              font-size: 0.45em;
+              color: var(--muted);
+            "
+          >
+            "Elige la opción que mejor encaje con tu momento profesional y con
+            el nivel de acompañamiento que requieras."
+          </div>
+        </section>
+
+        <!-- SLIDE 13: DOS RUTAS (LADO A VS LADO B) -->
+        <section>
+          <h2>El mercado Java tiene rutas de carrera distintas</h2>
+
+          <div class="grid-2" style="margin-top: 20px">
+            <!-- LADO A -->
+            <div class="card card-red" style="opacity: 0.85">
+              <h4 class="text-red">Lado A (Donde estás ahora)</h4>
+
+              <p
+                style="
+                  font-size: 0.9em;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                El programador enfocado solo en la ejecución
+              </p>
+
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  font-family: &quot;Space Mono&quot;, monospace;
+                  font-size: 0.95em;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                    padding-bottom: 4px;
+                  "
+                >
+                  <span>Programador Java Junior-Mid:</span>
+                  <span class="text-red">€20-30K</span>
                 </div>
 
-                <!-- Garantía Footer -->
-                <div class="hl-box hl-box-green" style="margin-top: 10px; font-size: 0.45em; padding: 10px 15px;">
-                    <strong>Garantía incondicional de 14 días sin riesgo:</strong> Accede a las primeras 6 clases en
-                    vivo, revisa los materiales y habla con tus compañeros. Si en 14 días sientes que el nivel no cumple
-                    tus expectativas o que no va a transformar tu carrera, te devolvemos el 100% de tu dinero de
-                    inmediato. Sin preguntas. Sin dramas. Pago 100% seguro a través de Stripe y PayPal.
-                </div>
-            </section>
-
-            <!-- SLIDE 20: CIERRE Y CTA FINAL -->
-            <section class="center">
-                <h2 class="gradient-text" style="font-size: 1.3em; margin: 15px 0 10px 0;">
-                    ¿Qué tipo de rol quieres construir para tu carrera?
-                </h2>
-
-                <div class="grid-2"
-                    style="font-size: 0.52em; text-align: left; max-width: 800px; margin: 0 auto 15px auto;">
-                    <div class="card card-red" style="padding: 12px 18px;">
-                        <p style="font-weight: bold; color: var(--red);">El programador que espera</p>
-                        <p style="font-size: 0.9em; color: var(--muted); margin-top: 4px;">
-                            "Esperaré a la próxima edición, ahora no tengo dinero." En la tercera edición dirá
-                            exactamente lo mismo. O comprará 5 cursos más de Udemy para seguir en el mismo rol y sueldo.
-                        </p>
-                    </div>
-                    <div class="card card-green" style="padding: 12px 18px;">
-                        <p style="font-weight: bold; color: var(--green);">El profesional que acciona</p>
-                        <p style="font-size: 0.9em; color: var(--muted); margin-top: 4px;">
-                            Entiende que el conocimiento técnico y el criterio de arquitectura son la brecha. Toma
-                            acción hoy mismo y cambia su nivel profesional.
-                        </p>
-                    </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                    padding-bottom: 4px;
+                  "
+                >
+                  <span>Senior Java Developer:</span>
+                  <span class="text-red">€30-40K</span>
                 </div>
 
-                <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 10px;">
-                    <div class="qr-frame">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales"
-                            alt="QR Code Bootcamp" />
-                    </div>
-                    <div style="text-align: left;">
-                        <h3 style="margin: 0; color: #fff; font-size: 0.85em;">Inscríbete ahora</h3>
-                        <p style="font-size: 0.45em; color: var(--muted); max-width: 320px; margin: 4px 0 10px 0;">
-                            Escanea el código o entra al enlace para asegurar tu plaza antes del 31 de Mayo.
-                        </p>
-                        <a href="https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales" class="url-display"
-                            target="_blank">
-                            codeja.dev/bootcamp/java-arquitecto-2-edicion/sales
-                        </a>
-                        <div>
-                            <a href="https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales" target="_blank"
-                                class="btn-primary" style="padding: 8px 18px; font-size: 0.45em; margin-top: 10px;">
-                                Inscribirse Ahora (Cierre 31 de Mayo)
-                            </a>
-                        </div>
-                    </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: bold;
+                    color: #fff;
+                  "
+                >
+                  <span>Techo Salarial Típico:</span>
+                  <span class="text-red">€45K</span>
+                </div>
+              </div>
+
+              <p
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-top: 15px;
+                  font-style: italic;
+                "
+              >
+                * Mucha gente se queda estancada aquí porque solo implementa
+                tareas asignadas, no porque no tenga potencial para destacar.
+              </p>
+            </div>
+
+            <!-- LADO B -->
+            <div class="card card-highlight" style="border-color: var(--green)">
+              <h4 class="text-green">
+                Lado B (Donde van los que lo entienden)
+              </h4>
+
+              <p
+                style="
+                  font-size: 0.9em;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                El profesional con criterio técnico y diseño
+              </p>
+
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  font-family: &quot;Space Mono&quot;, monospace;
+                  font-size: 0.95em;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                    padding-bottom: 4px;
+                  "
+                >
+                  <span>Arquitecto de Software Java:</span>
+                  <span class="text-green">€55-70K (max)</span>
                 </div>
 
-                <div class="hl-box hl-box-green"
-                    style="margin-top: 25px; margin-bottom: 25px; font-size: 0.65em; padding: 15px 20px; text-align: center; border-left-width: 6px; box-shadow: 0 4px 15px rgba(57, 211, 83, 0.15);">
-                    🎁 <strong>¡Regalo Exclusivo Masterclass!</strong> Usa el código <span class="text-green"
-                        style="font-family: 'Space Mono', monospace; font-weight: bold; font-size: 1.1em;">bootcamp10</span>
-                    para un <strong>10% de descuento</strong><br>
-                    <span style="font-size: 0.8em; color: var(--muted);">(Solo válido hoy para los asistentes)</span>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                    padding-bottom: 4px;
+                  "
+                >
+                  <span>Staff Engineer Java:</span>
+                  <span class="text-green">€70-95K (max)</span>
                 </div>
 
-                <!-- Cuenta atrás dinámica en cajas visuales -->
-                <div class="timer-container countdown-timer">
-                    <div class="timer-box timer-highlight">
-                        <span class="timer-num days-val">0</span>
-                        <span class="timer-label">Días</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num hours-val">0</span>
-                        <span class="timer-label">Horas</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num minutes-val">0</span>
-                        <span class="timer-label">Min</span>
-                    </div>
-                    <div class="timer-box">
-                        <span class="timer-num seconds-val">0</span>
-                        <span class="timer-label">Seg</span>
-                    </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: bold;
+                    color: #fff;
+                  "
+                >
+                  <span>Engineering Lead:</span>
+                  <span class="text-green">€70-90K (max)</span>
                 </div>
+              </div>
 
-                <div style="font-size: 0.38em; color: var(--muted); margin-top: 12px;">
-                    🛡️ Garantía de 14 días · Pago seguro · Acceso de por vida
-                </div>
-            </section>
-        </div>
+              <p
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-top: 15px;
+                  font-style: italic;
+                "
+              >
+                * El salto salarial y de impacto reside en dominar el
+                conocimiento específico de arquitectura y la experiencia
+                defendiéndolo.
+              </p>
+            </div>
+          </div>
+
+          <!-- FUENTE -->
+          <div style="margin-top: 18px; text-align: center">
+            <p style="font-size: 0.55em; color: var(--muted); opacity: 0.7">
+              Fuente:
+              <span style="color: #fff">Levels.fyi</span>
+            </p>
+          </div>
+        </section>
+
+        <!-- SLIDE 14: PRUEBA SOCIAL - DISCORD -->
+        <section>
+          <h2>¿Todavía tienes dudas? Pregunta directamente</h2>
+          <p style="font-size: 0.5em; color: var(--muted); margin-bottom: 15px">
+            Los alumnos de la primera edición ya están aplicando esto. Búscalos
+            y pregúntales en Discord sin filtros.
+          </p>
+          <div class="grid-4" style="margin-top: 10px">
+            <div class="card card-highlight" style="text-align: center">
+              <div style="font-size: 1.5em; margin-bottom: 8px">💬</div>
+              <h4
+                style="justify-content: center; font-size: 1.05em; color: #fff"
+              >
+                christian.mateoro
+              </h4>
+              <span class="badge badge-cyan">Alumno Ed. 1</span>
+            </div>
+            <div class="card card-highlight" style="text-align: center">
+              <div style="font-size: 1.5em; margin-bottom: 8px">💬</div>
+              <h4
+                style="justify-content: center; font-size: 1.05em; color: #fff"
+              >
+                paulocode
+              </h4>
+              <span class="badge badge-cyan">Alumno Ed. 1</span>
+            </div>
+            <div class="card card-highlight" style="text-align: center">
+              <div style="font-size: 1.5em; margin-bottom: 8px">💬</div>
+              <h4
+                style="justify-content: center; font-size: 1.05em; color: #fff"
+              >
+                ferramvil
+              </h4>
+              <span class="badge badge-cyan">Alumno Ed. 1</span>
+            </div>
+            <div class="card card-highlight" style="text-align: center">
+              <div style="font-size: 1.5em; margin-bottom: 8px">💬</div>
+              <h4
+                style="justify-content: center; font-size: 1.05em; color: #fff"
+              >
+                pablo94alcn
+              </h4>
+              <span class="badge badge-cyan">Alumno Ed. 1</span>
+            </div>
+          </div>
+          <div
+            class="hl-box hl-box-green"
+            style="margin-top: 15px; font-size: 0.6em; text-align: center"
+          >
+            <span
+              class="text-green"
+              style="
+                font-weight: 800;
+                font-size: 1.2em;
+                display: block;
+                margin-bottom: 4px;
+              "
+              >"Encontré un mejor trabajo con solamente las 3 primeras semanas
+              de este bootcamp."</span
+            >
+            — Paulo, Alumno 1ª Edición
+          </div>
+        </section>
+
+        <!-- SLIDE 15: RECONOCIMIENTO OFICIAL -->
+        <section>
+          <h2>Garantía de Reconocimiento Oficial</h2>
+          <div class="grid-2" style="margin-top: 25px; align-items: center">
+            <div
+              class="card card-highlight"
+              style="padding: 25px; font-size: 0.58em"
+            >
+              <h4 class="text-cyan">¿Qué significa Oracle ACE Associate?</h4>
+              <p style="margin-top: 10px; line-height: 1.5">
+                Es un reconocimiento oficial otorgado directamente por
+                <strong>Oracle Corporation</strong> a miembros de la comunidad
+                técnica global que demuestran un impacto técnico y de liderazgo
+                extraordinario.
+              </p>
+              <ul style="color: var(--muted); margin-top: 15px">
+                <li style="margin-bottom: 8px">
+                  No es una certificación que se compra aprobando un examen.
+                </li>
+                <li style="margin-bottom: 8px">
+                  Oracle publica el nombre de Jordy Rodríguez de manera oficial
+                  en su web pública de expertos del ecosistema.
+                </li>
+                <li>
+                  Estás aprendiendo de un experto validado y avalado
+                  directamente por la empresa creadora de Java.
+                </li>
+              </ul>
+            </div>
+            <div style="text-align: center">
+              <div style="font-size: 3em; margin-bottom: 10px">🏆</div>
+              <h3 style="color: #fff; margin-bottom: 10px">
+                Reconocido por Oracle
+              </h3>
+              <p
+                style="
+                  font-size: 0.5em;
+                  color: var(--muted);
+                  max-width: 380px;
+                  margin: 0 auto 20px auto;
+                "
+              >
+                Pocos bootcamps en el mercado hispanohablante pueden ofrecer
+                instructores avalados con esta distinción.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 16: TESTIMONIOS -->
+        <section>
+          <h2>Lo que dicen quienes ya han dado el salto</h2>
+          <div class="grid-3" style="margin-top: 20px">
+            <div
+              class="card card-highlight"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <p style="font-style: italic; color: #fff">
+                "Suelo ser bastante precavido en lo que compro por internet,
+                pero este bootcamp ha merecido cada euro que he invertido."
+              </p>
+              <div
+                style="
+                  margin-top: 15px;
+                  border-top: 1px solid rgba(255, 255, 255, 0.05);
+                  padding-top: 8px;
+                "
+              >
+                <strong>Pablo</strong>
+                <span
+                  style="display: block; font-size: 0.85em; color: var(--muted)"
+                  >Alumno 1ª Edición</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="card card-highlight"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <p style="font-style: italic; color: #fff">
+                "Este bootcamp me ha encantado de principio a fin. El valor que
+                aporta está muy por encima de su precio. Sin duda lo repetiría y
+                lo volvería a pagar sin pensarlo: es una inversión que compensa
+                totalmente por todo lo que te llevas."
+              </p>
+              <div
+                style="
+                  margin-top: 15px;
+                  border-top: 1px solid rgba(255, 255, 255, 0.05);
+                  padding-top: 8px;
+                "
+              >
+                <strong>Fernando</strong>
+                <span
+                  style="display: block; font-size: 0.85em; color: var(--muted)"
+                  >Senior Java Developer</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="card card-highlight"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <p style="font-style: italic; color: #fff">
+                "Me ha encantado. He aprendido muchísimo y me ha cambiado la
+                forma de pensar a la hora de construir software. Te abre una
+                nueva perspectiva sobre cómo diseñar mejor, con criterio y con
+                una visión mucho más profesional."
+              </p>
+              <div
+                style="
+                  margin-top: 15px;
+                  border-top: 1px solid rgba(255, 255, 255, 0.05);
+                  padding-top: 8px;
+                "
+              >
+                <strong>Christian</strong>
+                <span
+                  style="display: block; font-size: 0.85em; color: var(--muted)"
+                  >Backend Engineer</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 17: TEMARIO / CURRICULUM -->
+        <section>
+          <h2>Un plan de estudios completo de 12 semanas</h2>
+          <div class="grid-3-2" style="font-size: 0.9em">
+            <!-- Semana 1-2 -->
+            <div class="card">
+              <span
+                class="badge badge-cyan"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 1-2</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Fundamentos y Lifecycle
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Qualifiers, Profiles y Beans</li>
+                <li>Wiring avanzado (@Bean vs @Component)</li>
+                <li>Ciclo de vida del Bean e instanciación</li>
+                <li>DispatcherServlet y Global Errors</li>
+              </ul>
+            </div>
+            <!-- Semana 3-4 -->
+            <div class="card">
+              <span
+                class="badge badge-cyan"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 3-4</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Persistencia y Seguridad
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Tuning JPA: N+1 y Entity Graphs</li>
+                <li>CriteriaBuilder y Blaze-Persistence</li>
+                <li>Transacciones y Optimistic Locking</li>
+                <li>Security: RBAC y Refresh Tokens</li>
+              </ul>
+            </div>
+            <!-- Semana 5-6 -->
+            <div class="card">
+              <span
+                class="badge badge-cyan"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 5-6</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Testing y CI/CD
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Unit, Integration y Mutation testing (PIT)</li>
+                <li>Testcontainers (PostgreSQL/Docker)</li>
+                <li>Migraciones de DB (Flyway/Liquibase)</li>
+                <li>GitHub Actions Pipelines en Java</li>
+              </ul>
+            </div>
+            <!-- Semana 7-8 -->
+            <div class="card">
+              <span
+                class="badge badge-cyan"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 7-8</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Arquitectura y Mensajería
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Arquitectura Hexagonal (Puertos/Adapt.)</li>
+                <li>DDD: Aggregates y Bounded Contexts</li>
+                <li>Gateway y OpenFeign</li>
+                <li>Kafka: Topics y Event-Driven</li>
+              </ul>
+            </div>
+            <!-- Semana 9-10 -->
+            <div class="card">
+              <span
+                class="badge badge-cyan"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 9-10</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Patrones y Observabilidad
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Patrón SAGA y Event Sourcing</li>
+                <li>Resilience4j: Circuit Breakers y Rate Limiters</li>
+                <li>Micrometer, Prometheus y Grafana</li>
+                <li>OpenTelemetry y Jaeger distributed tracing</li>
+              </ul>
+            </div>
+            <!-- Semana 11-12 -->
+            <div class="card card-highlight">
+              <span
+                class="badge badge-green"
+                style="font-size: 0.75em; margin-bottom: 5px"
+                >Semanas 11-12</span
+              >
+              <h4 style="font-size: 1.05em; color: #fff; margin-top: 4px">
+                Proyecto Final de Arquitectura
+              </h4>
+              <ul
+                style="
+                  font-size: 0.85em;
+                  color: var(--muted);
+                  margin-left: 12px;
+                  margin-top: 5px;
+                "
+              >
+                <li>Desarrollo de multi-microservicio real</li>
+                <li>Implementación Hexagonal + DDD aplicada</li>
+                <li>Configuración completa de CI/CD & Observabilidad</li>
+                <li>Defensa del proyecto y feedback personalizado</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 18: URGENCIA & COUNTDOWN -->
+        <section class="center">
+          <h2 class="text-red" style="font-size: 1.5em; margin-bottom: 5px">
+            🔥 Inscripciones se cierran el 31 de Mayo a las 23:59
+          </h2>
+          <p
+            style="font-size: 0.55em; color: var(--muted); margin-bottom: 10px"
+          >
+            Y no reabriremos hasta la tercera edición. Cada mentor solo puede
+            dar feedback a 8-12 personas máximo.
+          </p>
+
+          <!-- Cuenta atrás dinámica en cajas visuales -->
+          <div class="timer-container countdown-timer">
+            <div class="timer-box timer-highlight">
+              <span class="timer-num days-val">0</span>
+              <span class="timer-label">Días</span>
+            </div>
+            <div class="timer-box">
+              <span class="timer-num hours-val">0</span>
+              <span class="timer-label">Horas</span>
+            </div>
+            <div class="timer-box">
+              <span class="timer-num minutes-val">0</span>
+              <span class="timer-label">Min</span>
+            </div>
+            <div class="timer-box">
+              <span class="timer-num seconds-val">0</span>
+              <span class="timer-label">Seg</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px">
+            <span
+              class="badge badge-orange"
+              style="font-size: 0.55em; padding: 6px 16px"
+            >
+              ⚠️ Solamente 24 Plazas Disponibles
+            </span>
+          </div>
+
+          <p
+            style="
+              font-size: 0.5em;
+              color: var(--muted);
+              max-width: 700px;
+              margin: 15px auto 0 auto;
+              line-height: 1.4;
+            "
+          >
+            Una vez alcanzado el cupo de alumnos o agotado el tiempo de cuenta
+            atrás, los botones de compra se desactivarán automáticamente para
+            proteger la calidad de las mentorías.
+          </p>
+        </section>
+
+        <!-- SLIDE 20: CIERRE Y CTA FINAL -->
+        <!-- SLIDE 20: CIERRE Y CTA FINAL -->
+        <section class="center">
+          <!-- QR CENTRAL - ELEMENTO PRINCIPAL -->
+          <div style="margin-bottom: 18px">
+            <div
+              class="qr-frame"
+              style="
+                display: inline-block;
+                width: 300px;
+                height: 300px;
+                padding: 16px;
+                border-radius: 24px;
+              "
+            >
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales"
+                alt="QR Code Bootcamp"
+                style="width: 100%; height: 100%"
+              />
+            </div>
+
+            <p
+              style="
+                font-size: 0.62em;
+                color: var(--muted);
+                margin-top: 10px;
+                margin-bottom: 0;
+                font-weight: 500;
+              "
+            >
+              Escanea para asegurar tu plaza
+            </p>
+            <a
+              href="https://www.codeja.dev/bootcamp/java-arquitecto-2-edicion/sales"
+              class="url-display"
+              target="_blank"
+            >
+              codeja.dev/bootcamp/java-arquitecto-2-edicion/sales
+            </a>
+          </div>
+
+          <!-- CÓDIGO DE DESCUENTO - SEGUNDA PRIORIDAD -->
+          <div
+            class="hl-box hl-box-green"
+            style="
+              margin-bottom: 18px;
+              font-size: 0.82em;
+              padding: 20px 26px;
+              text-align: center;
+              border-left-width: 5px;
+              box-shadow: 0 4px 18px rgba(57, 211, 83, 0.25);
+              max-width: 760px;
+              margin-left: auto;
+              margin-right: auto;
+              border-radius: 18px;
+            "
+          >
+            🎁 <strong>Código:</strong>
+
+            <span
+              class="text-green"
+              style="
+                font-family: &quot;Space Mono&quot;, monospace;
+                font-weight: bold;
+                font-size: 1.5em;
+                letter-spacing: 2px;
+              "
+            >
+              bootcamp10
+            </span>
+
+            → <strong>10% Descuento</strong>
+          </div>
+
+          <!-- CONTADOR - TERCERA PRIORIDAD -->
+          <div style="margin-bottom: 18px">
+            <div
+              class="timer-container countdown-timer"
+              style="justify-content: center; gap: 10px"
+            >
+              <div
+                class="timer-box timer-highlight"
+                style="min-width: 78px; padding: 14px 12px; border-radius: 14px"
+              >
+                <span class="timer-num days-val" style="font-size: 1.5em"
+                  >0</span
+                >
+                <span class="timer-label" style="font-size: 0.42em">Días</span>
+              </div>
+
+              <div
+                class="timer-box"
+                style="min-width: 78px; padding: 14px 12px; border-radius: 14px"
+              >
+                <span class="timer-num hours-val" style="font-size: 1.5em"
+                  >0</span
+                >
+                <span class="timer-label" style="font-size: 0.42em">Hrs</span>
+              </div>
+
+              <div
+                class="timer-box"
+                style="min-width: 78px; padding: 14px 12px; border-radius: 14px"
+              >
+                <span class="timer-num minutes-val" style="font-size: 1.5em"
+                  >0</span
+                >
+                <span class="timer-label" style="font-size: 0.42em">Min</span>
+              </div>
+
+              <div
+                class="timer-box"
+                style="min-width: 78px; padding: 14px 12px; border-radius: 14px"
+              >
+                <span class="timer-num seconds-val" style="font-size: 1.5em"
+                  >0</span
+                >
+                <span class="timer-label" style="font-size: 0.42em">Seg</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ELEMENTOS SECUNDARIOS -->
+          <hr
+            style="
+              border: none;
+              border-top: 1px solid var(--border);
+              margin: 12px auto;
+              max-width: 760px;
+              opacity: 0.3;
+            "
+          />
+
+          <div style="font-size: 0.5em; color: var(--muted); margin-top: 8px">
+            🛡️ 14 días sin riesgo · Acceso vitalicio
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
     <script>
-        // Configurar Reveal.js con una presentación moderna
-        Reveal.initialize({
-            hash: true,
-            slideNumber: "c/t",
-            center: true,
-            transition: "fade",
-            width: 960,
-            height: 700,
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 2.0,
-            plugins: [RevealNotes, RevealHighlight],
-        });
+      // Configurar Reveal.js con una presentación moderna
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        center: true,
+        transition: "fade",
+        width: 960,
+        height: 700,
+        margin: 0.1,
+        minScale: 0.2,
+        maxScale: 2.0,
+        plugins: [RevealNotes, RevealHighlight],
+      });
 
-        // Lógica del contador regresivo dinámico hasta el 31 de Mayo de 2026 a las 23:59:59 (hora de cierre de inscripciones)
-        const targetDate = new Date("2026-05-31T23:59:59").getTime();
+      // Lógica del contador regresivo dinámico hasta el 31 de Mayo de 2026 a las 23:59:59 (hora de cierre de inscripciones)
+      const targetDate = new Date("2026-05-31T23:59:59").getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-            if (distance < 0) {
-                document.querySelectorAll(".countdown-timer").forEach(el => {
-                    el.innerHTML = "<div class='timer-box timer-highlight' style='min-width: 300px;'><span class='timer-num' style='font-size:0.8em;'>INSCRIPCIONES CERRADAS</span></div>";
-                });
-                document.querySelectorAll(".urgency-banner").forEach(el => {
-                    el.innerHTML = "<span>⚠️ Inscripciones Cerradas</span>";
-                });
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.querySelectorAll(".days-val").forEach(el => el.innerText = days);
-            document.querySelectorAll(".hours-val").forEach(el => el.innerText = hours);
-            document.querySelectorAll(".minutes-val").forEach(el => el.innerText = minutes);
-            document.querySelectorAll(".seconds-val").forEach(el => el.innerText = seconds);
+        if (distance < 0) {
+          document.querySelectorAll(".countdown-timer").forEach((el) => {
+            el.innerHTML =
+              "<div class='timer-box timer-highlight' style='min-width: 300px;'><span class='timer-num' style='font-size:0.8em;'>INSCRIPCIONES CERRADAS</span></div>";
+          });
+          document.querySelectorAll(".urgency-banner").forEach((el) => {
+            el.innerHTML = "<span>⚠️ Inscripciones Cerradas</span>";
+          });
+          return;
         }
 
-        // Actualizar inmediatamente y luego cada segundo
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
-</body>
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+        document
+          .querySelectorAll(".days-val")
+          .forEach((el) => (el.innerText = days));
+        document
+          .querySelectorAll(".hours-val")
+          .forEach((el) => (el.innerText = hours));
+        document
+          .querySelectorAll(".minutes-val")
+          .forEach((el) => (el.innerText = minutes));
+        document
+          .querySelectorAll(".seconds-val")
+          .forEach((el) => (el.innerText = seconds));
+      }
+
+      // Actualizar inmediatamente y luego cada segundo
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
 </html>
