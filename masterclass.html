@@ -514,6 +514,16 @@
           <p style="color: var(--muted); font-size: 0.7em">
             Y cuándo usar realmente Hexagonal, Monolito o Microservicios
           </p>
+          <aside class="notes">
+            Hoy no quiero hablaros solo de frameworks o patrones de moda. Quiero
+            hablar de por qué muchos proyectos Java empiezan bien… y terminan
+            siendo un infierno cuando llegan a producción. La mayoría de
+            problemas no aparecen cuando tienes 3 usuarios. Aparecen cuando el
+            negocio crece, cuando el equipo crece y cuando el sistema empieza a
+            tener presión real. Y ahí es donde muchas arquitecturas se rompen.
+            La idea de esta charla es daros criterio técnico. No recetas
+            mágicas.
+          </aside>
         </section>
 
         <!-- SLIDE 2: OBJETIVOS -->
@@ -549,6 +559,15 @@
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            El objetivo principal de hoy es enseñaros a pensar como arquitectos.
+            Porque muchas veces el problema no es saber programar. El problema
+            es no entender el coste real de cada decisión técnica. Vamos a ver
+            cuándo tiene sentido usar microservicios. Cuándo Hexagonal aporta
+            valor. Y cuándo todo eso simplemente ralentiza al equipo. El mejor
+            arquitecto no es el que usa más tecnologías. Es el que resuelve el
+            problema con la menor complejidad posible.
+          </aside>
         </section>
 
         <!-- SLIDE 4: MENTORES -->
@@ -653,6 +672,15 @@
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            Antes de continuar, os cuento rápidamente quiénes somos. Tanto Jordy
+            como yo llevamos años trabajando en producción en sistemas reales,
+            con tráfico real y problemas reales. Y esto es importante porque
+            muchas veces internet está lleno de consejos de gente que nunca ha
+            sufrido mantener arquitecturas complejas durante años. Aquí no
+            venimos a repetir teoría. Venimos a contar cosas que funcionan en
+            empresas reales.
+          </aside>
         </section>
 
         <!-- SLIDE 5: COMPLEJIDAD VS VALOR (DIDÁCTICA) -->
@@ -692,6 +720,15 @@
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Este es probablemente el error más común que veo en desarrolladores
+            junior. Confundir complejidad con calidad. Parece que si usas Kafka,
+            Kubernetes y 40 microservicios eres automáticamente senior. Y no. A
+            veces la solución correcta es un monolito simple bien hecho. He
+            visto MVPs con microservicios para 3 usuarios. Eso no es
+            escalabilidad. Eso es overengineering. Cada tecnología añade coste
+            mental, coste operativo y coste de mantenimiento.
+          </aside>
         </section>
 
         <!-- SLIDE 6: HEXAGONAL (DIDÁCTICA) -->
@@ -731,6 +768,15 @@
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            Hexagonal es una arquitectura muy potente. Pero no es gratis. Tiene
+            muchísimo sentido cuando el dominio es complejo y quieres proteger
+            la lógica de negocio. Por ejemplo: finanzas, seguros, pagos,
+            pricing, etc. Pero si tienes un CRUD simple… meter capas, puertos y
+            adaptadores por todos lados puede hacer que el proyecto vaya
+            muchísimo más lento. La clave es entender el contexto. No aplicar
+            patrones por religión.
+          </aside>
         </section>
 
         <!-- SLIDE 7: MICROSERVICIOS (DIDÁCTICA) -->
@@ -767,6 +813,16 @@
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Otra idea importante: microservicios no significa arquitectura
+            avanzada. De hecho, muchas veces es muchísimo más difícil mantener
+            microservicios que un monolito. Porque aparecen problemas
+            distribuidos: latencia, observabilidad, sincronización, fallos
+            parciales… Y esos problemas son extremadamente complejos. Muchas
+            empresas estarían mejor con un monolito modular bien diseñado.
+            Separación interna clara. Bounded contexts. Buen diseño. Sin pagar
+            el coste brutal de infraestructura distribuida.
+          </aside>
         </section>
 
         <!-- SLIDE 8: CASO REAL - TOKENS (DIDÁCTICA) -->
@@ -848,6 +904,15 @@ src/main/java/com/app
             sea tu arquitectura, menos contexto necesita la IA para ayudarte
             correctamente.
           </div>
+          <aside class="notes">
+            Aquí aparece algo interesante con la IA. La calidad de la
+            arquitectura afecta directamente a cómo la IA entiende tu proyecto.
+            Si tu código es caótico… la IA necesita muchísimo contexto para
+            ayudarte. Pero cuando el proyecto tiene estructura clara, nombres
+            coherentes y responsabilidades separadas… la IA entiende mucho más
+            rápido lo que ocurre. Y eso reduce tokens, reduce prompts enormes y
+            mejora muchísimo la productividad.
+          </aside>
         </section>
 
         <!-- SLIDE 9: WAR STORIES (KAFKA) -->
@@ -886,6 +951,14 @@ src/main/java/com/app
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            Aquí os cuento una experiencia real. Trabajábamos con un monolito
+            enorme en PHP con Laravel. Y ojo: Laravel no era el problema. El
+            problema fue que el negocio creció muchísimo más rápido de lo
+            esperado. Cada vez había más dependencias. Más miedo al desplegar.
+            Más riesgo en producción. Y llegó un momento donde tocar cualquier
+            cosa daba miedo.
+          </aside>
         </section>
 
         <!-- SLIDE: EL CAOS -->
@@ -916,6 +989,13 @@ src/main/java/com/app
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Esto es importante: el problema no era el framework. Muchos
+            desarrolladores culpan la tecnología. Pero normalmente el problema
+            es arquitectónico y organizativo. El sistema había crecido sin
+            límites claros. Todo dependía de todo. Y cuando ocurre eso, el coste
+            de cambiar cualquier cosa explota.
+          </aside>
         </section>
 
         <!-- SLIDE: LA DECISIÓN -->
@@ -955,6 +1035,13 @@ src/main/java/com/app
               </div>
             </div>
           </div>
+          <aside class="notes">
+            Entonces decidimos empezar una migración progresiva. No hicimos un
+            Big Bang. Eso suele terminar mal. Fuimos separando dominios poco a
+            poco hacia servicios independientes. Elegimos Kotlin, Micronaut y
+            GraalVM porque queríamos: más estabilidad, menos consumo, y deploys
+            más seguros.
+          </aside>
         </section>
 
         <!-- SLIDE: POR QUÉ KOTLIN -->
@@ -988,6 +1075,13 @@ src/main/java/com/app
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Kotlin nos cambió muchísimo la estabilidad. Muchos errores que antes
+            descubríamos en producción… ahora aparecían durante compilación. Y
+            eso cambia completamente cómo trabaja un equipo. Cuando tienes más
+            seguridad al cambiar código… vas más rápido. Porque el equipo tiene
+            menos miedo.
+          </aside>
         </section>
 
         <!-- SLIDE: RENDIMIENTO -->
@@ -1026,6 +1120,12 @@ src/main/java/com/app
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Y además ganamos muchísimo rendimiento. Micronaut y GraalVM reducían
+            muchísimo el consumo. Los servicios arrancaban rápido, consumían
+            menos RAM y eran más predecibles bajo carga. Especialmente
+            importante en cloud donde cada recurso cuesta dinero.
+          </aside>
         </section>
 
         <!-- SLIDE: IMPACTO ORGANIZATIVO -->
@@ -1047,14 +1147,18 @@ src/main/java/com/app
                 </div>
 
                 <div>
-                  <div style="font-size: large;" class="hl-box hl-box-green">
+                  <div style="font-size: large" class="hl-box hl-box-green">
                     Antes:
                     <strong>todos tocaban el mismo sistema</strong>
                   </div>
 
                   <div
                     class="hl-box"
-                    style="font-size: large; margin-top: 18px; border-left-color: var(--green)"
+                    style="
+                      font-size: large;
+                      margin-top: 18px;
+                      border-left-color: var(--green);
+                    "
                   >
                     Después:
                     <strong>cada equipo evolucionaba su dominio</strong>
@@ -1063,6 +1167,12 @@ src/main/java/com/app
               </div>
             </div>
           </div>
+          <aside class="notes">
+            Pero el mayor cambio no fue técnico. Fue organizativo. Pudimos
+            dividir equipos por dominio. Cada equipo tenía ownership. Deploys
+            independientes. Menos bloqueos. Y ahí entendí algo importante: la
+            arquitectura no solo organiza código. Organiza personas.
+          </aside>
         </section>
 
         <!-- SLIDE: CONCLUSIÓN -->
@@ -1087,6 +1197,12 @@ src/main/java/com/app
               es entender cómo evoluciona un sistema cuando la empresa crece.
             </p>
           </div>
+          <aside class="notes">
+            Esta es probablemente la lección más importante de toda la charla.
+            La diferencia entre un desarrollador que solo implementa tickets… y
+            uno que realmente aporta valor… es entender cómo evoluciona un
+            sistema cuando el negocio crece.
+          </aside>
         </section>
 
         <!-- SLIDE 10: WAR STORIES (UBER VS NUESTRA ESCALA) -->
@@ -1129,6 +1245,14 @@ src/main/java/com/app
               </div>
             </div>
           </div>
+          <aside class="notes">
+            Aquí quiero dar un poco de perspectiva. Muchas veces se habla de
+            escalabilidad como si solo importaran empresas gigantes tipo Uber.
+            Pero incluso empresas medianas pueden tener cargas enormes para el
+            tamaño de sus equipos. Y muchas veces la clave no está en “usar más
+            tecnología”. Está en optimizar bien el negocio y entender dónde
+            están los cuellos de botella reales.
+          </aside>
         </section>
 
         <!-- SLIDE 11: TRANSICIÓN A LA VENTA -->
@@ -1148,6 +1272,12 @@ src/main/java/com/app
           >
             Eso es exactamente lo que ocurre en nuestro Bootcamp de 3 meses.
           </div>
+          <aside class="notes">
+            Y aquí viene algo importante. El problema de muchos desarrolladores
+            no es falta de cursos. Es falta de dirección, feedback y práctica
+            real. Porque puedes ver 300 horas de vídeos… pero seguir sin saber
+            diseñar sistemas reales.
+          </aside>
         </section>
 
         <!-- SLIDE 12: TABLA COMPARATIVA -->
@@ -1338,6 +1468,12 @@ src/main/java/com/app
             "Elige la opción que mejor encaje con tu momento profesional y con
             el nivel de acompañamiento que requieras."
           </div>
+          <aside class="notes">
+            Por eso construimos el bootcamp de esta forma. Muy enfocado a
+            práctica real, revisión de código y experiencia aplicada. No
+            queríamos crear otro curso grabado donde el alumno desaparece.
+            Queríamos acompañar el proceso de crecimiento profesional.
+          </aside>
         </section>
 
         <!-- SLIDE 13: DOS RUTAS (LADO A VS LADO B) -->
@@ -1502,6 +1638,14 @@ src/main/java/com/app
               <span style="color: #fff">Levels.fyi</span>
             </p>
           </div>
+          <aside class="notes">
+            Y esto también es importante entenderlo. El mercado Java tiene
+            caminos profesionales muy distintos. Hay gente que pasa años
+            implementando tareas sin desarrollar criterio arquitectónico. Y eso
+            normalmente limita muchísimo tanto el salario como el impacto
+            profesional. El salto grande ocurre cuando entiendes diseño,
+            escalabilidad y toma de decisiones técnicas.
+          </aside>
         </section>
 
         <!-- SLIDE 14: PRUEBA SOCIAL - DISCORD -->
@@ -1566,6 +1710,13 @@ src/main/java/com/app
             >
             — Paulo, Alumno 1ª Edición
           </div>
+          <aside class="notes">
+            Algo que nos parecía importante era dar transparencia total. Por eso
+            animamos a la gente a hablar directamente con alumnos reales. Sin
+            filtros. Sin marketing raro. Porque al final quien mejor puede
+            explicar el impacto del bootcamp son las personas que ya lo han
+            vivido.
+          </aside>
         </section>
 
         <!-- SLIDE 15: RECONOCIMIENTO OFICIAL -->
@@ -1615,6 +1766,12 @@ src/main/java/com/app
               </p>
             </div>
           </div>
+          <aside class="notes">
+            Lo de Oracle ACE no es simplemente una certificación más. Es un
+            reconocimiento oficial muy difícil de conseguir dentro del
+            ecosistema Java. Y para nosotros era importante construir el
+            bootcamp con estándares reales de industria.
+          </aside>
         </section>
 
         <!-- SLIDE 16: TESTIMONIOS -->
@@ -1706,6 +1863,12 @@ src/main/java/com/app
               </div>
             </div>
           </div>
+          <aside class="notes">
+            Aquí simplemente quiero que os fijéis en algo. La mayoría de
+            testimonios hablan menos de tecnologías… y más de cambio de
+            mentalidad. Porque eso es lo que realmente cambia carreras
+            profesionales.
+          </aside>
         </section>
 
         <!-- SLIDE 17: TEMARIO / CURRICULUM -->
@@ -1857,6 +2020,12 @@ src/main/java/com/app
               </ul>
             </div>
           </div>
+          <aside class="notes">
+            El objetivo del plan de estudios no es memorizar frameworks. Es
+            desarrollar criterio técnico. Por eso mezclamos: arquitectura,
+            testing, observabilidad, mensajería, CI/CD y sistemas distribuidos.
+            Porque así es como funciona el mundo real.
+          </aside>
         </section>
 
         <!-- SLIDE 18: URGENCIA & COUNTDOWN -->
@@ -1913,6 +2082,11 @@ src/main/java/com/app
             atrás, los botones de compra se desactivarán automáticamente para
             proteger la calidad de las mentorías.
           </p>
+          <aside class="notes">
+            Y sí, mantenemos plazas limitadas. No por marketing. Sino porque
+            revisar código y dar mentoría personalizada consume muchísimo
+            tiempo. Y preferimos menos alumnos con más calidad que lo contrario.
+          </aside>
         </section>
 
         <!-- SLIDE 20: CIERRE Y CTA FINAL -->
@@ -2052,6 +2226,14 @@ src/main/java/com/app
           <div style="font-size: 0.5em; color: var(--muted); margin-top: 8px">
             🛡️ 14 días sin riesgo · Acceso vitalicio
           </div>
+          <aside class="notes">
+            Y para cerrar: si sentís que lleváis tiempo programando pero todavía
+            no termináis de entender cómo piensan los seniors o arquitectos… ese
+            es exactamente el tipo de transición que trabajamos dentro del
+            bootcamp. Escanead el QR, revisad toda la información tranquilamente
+            y valorad si encaja con vuestro momento profesional. Gracias a
+            todos.
+          </aside>
         </section>
       </div>
     </div>
@@ -2066,8 +2248,8 @@ src/main/java/com/app
         slideNumber: "c/t",
         center: true,
         transition: "fade",
-        width: 960,
-        height: 700,
+        width: 1080,
+        height: 720,
         margin: 0.1,
         minScale: 0.2,
         maxScale: 2.0,
