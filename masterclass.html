@@ -1210,54 +1210,233 @@ src/main/java/com/app
           </aside>
         </section>
 
-        <!-- SLIDE 10: WAR STORIES (UBER VS NUESTRA ESCALA) -->
+        <!-- SLIDE 10A: HISTORIA · 1. LLEGAMOS AL PROYECTO -->
         <section>
-          <h2>Somos más utilizados que Uber (A nuestra escala)</h2>
-          <div class="card" style="font-size: 0.58em; padding: 25px">
-            <p style="font-size: 1.15em; line-height: 1.5; margin-bottom: 15px">
-              "Procesamos millones de peticiones mensuales hacia diferentes
-              funciones críticas de negocio y logramos rendimientos superiores a
-              la infraestructura de Uber, contando con una fracción ínfima de
-              sus recursos."
+          <span class="badge badge-cyan">Historia real · Producción</span>
+          <h2 style="margin-top: 15px; font-size: 1.3em">
+            Así logramos ser
+            <span class="gradient-text-green">más usados que Uber</span>
+            <span style="font-size: 0.6em; color: var(--muted)"
+              >(en nuestra escala)</span
+            >
+          </h2>
+          <div class="card card-highlight" style="font-size: 0.6em; padding: 25px">
+            <p style="font-size: 1.15em; line-height: 1.6">
+              Una plataforma de movilidad, del estilo
+              <span class="text-cyan">Uber</span>, que procesaba
+              <strong>millones de peticiones mensuales</strong> hacia funciones
+              críticas de negocio.
             </p>
-            <div class="grid-3" style="margin-top: 15px">
-              <div class="card card-red" style="padding: 10px 15px">
-                <h4 class="text-red" style="font-size: 0.9em">
-                  El Peligro Externo
-                </h4>
-                <p>
-                  El mantenimiento de apps móviles depende de despliegues y
-                  factores externos incontrolables.
-                </p>
-              </div>
-              <div class="card card-orange" style="padding: 10px 15px">
-                <h4 class="text-orange" style="font-size: 0.9em">
-                  Cuellos de Botella
-                </h4>
-                <p>
-                  Detalles ínfimos de código bloqueante arruinan la experiencia
-                  general del usuario.
-                </p>
-              </div>
-              <div class="card card-green" style="padding: 10px 15px">
-                <h4 class="text-green" style="font-size: 0.9em">
-                  Foco en Negocio
-                </h4>
-                <p>
-                  Solo el 10% de los accesos acaban en viajes vs solicitudes de
-                  cotización. Optimizamos la lectura.
-                </p>
-              </div>
+            <p style="font-size: 1.15em; line-height: 1.6; margin-top: 18px">
+              Un equipo pequeño, una app móvil viva en manos de usuarios reales…
+              y la presión de que <span class="text-cyan">todo tenía que
+              responder rápido</span>.
+            </p>
+          </div>
+          <aside class="notes">
+            (Jordy)
+            Os quiero contar una historia real de producción. Llegamos a una
+            plataforma de movilidad parecida a Uber, pero a nuestra escala, que
+            ya procesaba millones de peticiones al mes hacia funciones críticas
+            de negocio. Equipo pequeño, app móvil en manos de usuarios reales, y
+            la presión de que todo respondiera rápido. Ese es el punto de
+            partida.
+          </aside>
+        </section>
+
+        <!-- SLIDE 10B: HISTORIA · 2. IDENTIFICAMOS LOS PROBLEMAS -->
+        <section>
+          <span class="badge badge-orange">2 · El diagnóstico</span>
+          <h2 style="margin-top: 15px">
+            Identificamos los <span class="text-red">problemas</span>
+          </h2>
+          <div class="grid-2">
+            <div class="card card-red" style="padding: 16px 18px">
+              <h4 class="text-red" style="font-size: 0.95em">
+                ⚠️ El peligro externo
+              </h4>
+              <p>
+                El mantenimiento de apps móviles depende de despliegues y
+                factores externos incontrolables: cada error en producción es
+                lento y caro de corregir.
+              </p>
+            </div>
+            <div class="card card-orange" style="padding: 16px 18px">
+              <h4 class="text-orange" style="font-size: 0.95em">
+                🐌 Cuellos de botella
+              </h4>
+              <p>
+                Detalles ínfimos de <strong>código bloqueante</strong> arruinan
+                la experiencia general del usuario. El rendimiento no escalaba
+                con la carga real.
+              </p>
             </div>
           </div>
           <aside class="notes">
             (Jordy)
-            Aquí quiero dar un poco de perspectiva. Muchas veces se habla de
-            escalabilidad como si solo importaran empresas gigantes tipo Uber.
-            Pero incluso empresas medianas pueden tener cargas enormes para el
-            tamaño de sus equipos. Y muchas veces la clave no está en “usar más
-            tecnología”. Está en optimizar bien el negocio y entender dónde
-            están los cuellos de botella reales.
+            Y al meternos a fondo aparecieron dos problemas. El primero: el
+            peligro externo. En apps móviles dependes de despliegues y factores
+            que no controlas, así que cada bug en producción se vuelve lento y
+            caro. El segundo: cuellos de botella de rendimiento. Detalles
+            ínfimos de código bloqueante que arruinaban la experiencia de todos.
+            La tecnología y el rendimiento no daban la talla con la carga real.
+          </aside>
+        </section>
+
+        <!-- SLIDE 10C: HISTORIA · 3. ASÍ LO RESOLVIMOS -->
+        <section>
+          <span class="badge badge-green">3 · La solución técnica</span>
+          <h2 style="margin-top: 15px">
+            Así lo <span class="text-green">resolvimos</span>
+          </h2>
+          <div class="card card-green" style="font-size: 0.6em; padding: 25px">
+            <ul style="line-height: 1.9; margin-left: 18px">
+              <li>
+                Atacamos el <strong>código bloqueante</strong> y rediseñamos los
+                flujos críticos para que escalaran bajo carga real.
+              </li>
+              <li>
+                Aislamos lo que dependía de factores externos para que un fallo
+                no arrastrara al sistema entero.
+              </li>
+              <li>
+                Decisiones de arquitectura guiadas por
+                <span class="text-green">datos de negocio</span>, no por modas
+                tecnológicas.
+              </li>
+            </ul>
+          </div>
+          <aside class="notes">
+            (Jordy)
+            ¿Y cómo lo resolvimos? Primero, atacando el código bloqueante y
+            rediseñando los flujos críticos para que escalaran de verdad.
+            Segundo, aislando todo lo que dependía de factores externos, para
+            que un fallo puntual no se llevara por delante al sistema completo. Y
+            sobre todo, tomando decisiones de arquitectura guiadas por datos de
+            negocio, no por la moda tecnológica de turno.
+          </aside>
+        </section>
+
+        <!-- SLIDE 10D: HISTORIA · 4. LANZAMOS A PRODUCCIÓN -->
+        <section class="center">
+          <span class="badge badge-cyan">4 · El lanzamiento</span>
+          <h2 style="margin: 20px 0">
+            Lanzamos a <span class="gradient-text">producción</span> 🚀
+          </h2>
+          <div
+            class="hl-box hl-box-green"
+            style="
+              display: inline-block;
+              font-size: 0.8em;
+              padding: 18px 32px;
+              line-height: 1.6;
+            "
+          >
+            Miles de peticiones el primer día, respondiendo rápido, con un
+            equipo mínimo.
+            <br />
+            <strong class="text-green">Todo funcionaba.</strong>
+          </div>
+          <aside class="notes">
+            (Jordy)
+            Y lanzamos a producción. Miles de peticiones ya el primer día,
+            respondiendo rápido, con un equipo mínimo. En ese momento todo
+            funcionaba… y
+            parecía que la historia terminaba bien. Pero faltaba un capítulo.
+          </aside>
+        </section>
+
+        <!-- SLIDE 10E: HISTORIA · 5. LA FACTURA INESPERADA -->
+        <section class="center">
+          <span class="badge badge-orange">5 · El golpe inesperado</span>
+          <p style="font-size: 0.7em; color: var(--muted); margin: 20px 0 0">
+            Entonces llegó la factura del cloud…
+          </p>
+          <div
+            style="
+              font-size: 4.2em;
+              font-weight: 900;
+              line-height: 1;
+              margin: 10px 0;
+            "
+            class="gradient-text-orange"
+          >
+            ~$1.600
+          </div>
+          <p style="font-size: 0.8em; font-weight: bold" class="text-red">
+            al día
+          </p>
+          <div
+            class="hl-box hl-box-red"
+            style="
+              display: inline-block;
+              font-size: 0.65em;
+              padding: 14px 28px;
+              margin-top: 10px;
+            "
+          >
+            El sistema funcionaba… pero nos estaba sangrando dinero cada hora.
+          </div>
+          <aside class="notes">
+            (Jordy)
+            Y aquí viene el golpe. Llegó la factura del cloud: cerca de 1.600
+            dólares al día. El sistema funcionaba perfecto de cara al usuario…
+            pero por dentro nos estaba sangrando dinero cada hora. Y esto es
+            clave: un sistema puede estar "funcionando" y a la vez ser
+            insostenible.
+          </aside>
+        </section>
+
+        <!-- SLIDE 10F: HISTORIA · 6. PAYOFF (UBER A NUESTRA ESCALA) -->
+        <section>
+          <span class="badge badge-green">6 · La decisión correcta</span>
+          <h2 style="margin-top: 12px; font-size: 1.3em">
+            Los <span class="gradient-text-green">resultados</span> fueron
+            evidentes
+          </h2>
+          <div class="grid-2" style="align-items: stretch">
+            <div class="card card-green" style="padding: 16px 18px">
+              <h4 class="text-green" style="font-size: 0.95em">
+                🔍 Entendimos Firebase Realtime Database
+              </h4>
+              <p>
+                El coste no estaba en computar, estaba en
+                <strong>leer datos mal</strong>. Comprender cómo factura y cómo
+                se modelan los datos en RTDB lo cambió todo.
+              </p>
+            </div>
+            <div class="card card-green" style="padding: 16px 18px">
+              <h4 class="text-green" style="font-size: 0.95em">
+                🎯 Foco en el negocio
+              </h4>
+              <p>
+                Solo el <strong>10%</strong> de los accesos acaban en viajes,
+                frente a las solicitudes de cotización. Optimizamos la lectura
+                donde de verdad importaba.
+              </p>
+            </div>
+          </div>
+          <div
+            class="hl-box hl-box-green"
+            style="margin-top: 18px; font-size: 0.62em"
+          >
+            Mejoramos nuestro propio rendimiento de infraestructura con una
+            <span class="text-green">fracción mínima de la facturación
+            anterior</span>. No fue usar más tecnología. Fue
+            <strong>entenderla y decidir bien</strong>.
+          </div>
+          <aside class="notes">
+            (Jordy)
+            ¿Y cómo lo resolvimos? No tirando más tecnología al problema, sino
+            entendiendo la que ya teníamos. Nos sentamos a comprender de verdad
+            cómo factura Firebase Realtime Database: el coste no estaba en
+            computar, estaba en leer mal los datos. Y miramos el negocio: solo el
+            10% de los accesos terminan en un viaje, frente a un montón de
+            solicitudes de cotización. Así que optimizamos la lectura justo
+            donde importaba. El resultado: rendimientos superiores a Uber, a
+            nuestra escala, con una fracción ínfima de sus recursos. La lección
+            es esta: la clave no fue usar más tecnología, fue entenderla y tomar
+            las decisiones correctas.
           </aside>
         </section>
 
@@ -1268,8 +1447,7 @@ src/main/java/com/app
         <!-- SLIDE 11: TRANSICIÓN A LA VENTA -->
         <section class="center">
           <h2 class="gradient-text" style="font-size: 1.8em; margin: 30px 0">
-            "Lo que necesitas no es más cursos de Udemy. Es claridad, práctica y
-            feedback directo."
+            "La diferencia está en la claridad, práctica y feedback directo."
           </h2>
           <div
             class="hl-box hl-box-green"
@@ -1489,7 +1667,7 @@ src/main/java/com/app
 
         <!-- SLIDE 13: DOS RUTAS (LADO A VS LADO B) -->
         <section>
-          <h2>El salario mejora, sobretodo hoy en día con la IA</h2>
+          <h2>Accede a mejores puestos, sobre todo hoy con la IA</h2>
 
           <div class="grid-2" style="margin-top: 20px">
             <!-- LADO A -->
@@ -1506,51 +1684,11 @@ src/main/java/com/app
                 El programador enfocado solo en la ejecución
               </p>
 
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  gap: 8px;
-                  font-family: &quot;Space Mono&quot;, monospace;
-                  font-size: 0.95em;
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                    padding-bottom: 4px;
-                  "
-                >
-                  <span>Programador Java Junior-Mid:</span>
-                  <span class="text-red">€20-30K</span>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                    padding-bottom: 4px;
-                  "
-                >
-                  <span>Senior Java Developer:</span>
-                  <span class="text-red">€30-40K</span>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    font-weight: bold;
-                    color: #fff;
-                  "
-                >
-                  <span>Techo Salarial Típico:</span>
-                  <span class="text-red">€45K</span>
-                </div>
-              </div>
+              <ul style="font-size: 0.92em; line-height: 1.7">
+                <li>Implementa tareas que otros diseñan.</li>
+                <li>Compite por los mismos puestos que todos.</li>
+                <li>Su crecimiento depende de la empresa, no de él.</li>
+              </ul>
 
               <p
                 style="
@@ -1581,51 +1719,15 @@ src/main/java/com/app
                 El profesional con criterio técnico y diseño
               </p>
 
-              <div
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  gap: 8px;
-                  font-family: &quot;Space Mono&quot;, monospace;
-                  font-size: 0.95em;
-                "
-              >
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                    padding-bottom: 4px;
-                  "
-                >
-                  <span>Arquitecto de Software Java:</span>
-                  <span class="text-green">€55-70K (max)</span>
-                </div>
+              <p style="font-size: 0.9em; color: #fff; margin-bottom: 6px">
+                Con lo que aprendes en el Bootcamp puedes optar a:
+              </p>
 
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                    padding-bottom: 4px;
-                  "
-                >
-                  <span>Staff Engineer Java:</span>
-                  <span class="text-green">€70-95K (max)</span>
-                </div>
-
-                <div
-                  style="
-                    display: flex;
-                    justify-content: space-between;
-                    font-weight: bold;
-                    color: #fff;
-                  "
-                >
-                  <span>Engineering Lead:</span>
-                  <span class="text-green">€70-90K (max)</span>
-                </div>
-              </div>
+              <ul style="font-size: 0.92em; line-height: 1.7">
+                <li class="text-green">Arquitecto de Software Java</li>
+                <li class="text-green">Staff Engineer</li>
+                <li class="text-green">Engineering Lead</li>
+              </ul>
 
               <p
                 style="
@@ -1635,28 +1737,21 @@ src/main/java/com/app
                   font-style: italic;
                 "
               >
-                * El salto salarial y de impacto reside en dominar el
-                conocimiento específico de arquitectura y la experiencia
-                defendiéndolo.
+                * Roles donde diseñas, decides y lideras… no solo ejecutas. El
+                salto está en dominar la arquitectura y saber defenderla.
               </p>
             </div>
           </div>
 
-          <!-- FUENTE -->
-          <div style="margin-top: 18px; text-align: center">
-            <p style="font-size: 0.55em; color: var(--muted); opacity: 0.7">
-              Fuente:
-              <span style="color: #fff">Levels.fyi</span>
-            </p>
-          </div>
           <aside class="notes">
             (Jordy)
             Y esto también es importante entenderlo. El mercado Java tiene
             caminos profesionales muy distintos. Hay gente que pasa años
-            implementando tareas sin desarrollar criterio arquitectónico. Y eso
-            normalmente limita muchísimo tanto el salario como el impacto
-            profesional. El salto grande ocurre cuando entiendes diseño,
-            escalabilidad y toma de decisiones técnicas.
+            implementando tareas sin desarrollar criterio arquitectónico, y eso
+            limita muchísimo su crecimiento profesional. El salto grande ocurre
+            cuando entiendes diseño, escalabilidad y toma de decisiones
+            técnicas. Y con los conocimientos que adquieres en el Bootcamp,
+            indudablemente puedes optar a mejores puestos de trabajo.
           </aside>
         </section>
 
